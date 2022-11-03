@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/login_background"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/login_background"
+        android:clipToOutline="true"
+        tools:ignore="MissingConstraints,RedundantNamespace,UnusedAttribute"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/result_detail_bar" />
+
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="65dp"
+            android:background="@drawable/result_detail_time_cost" />
+
+        <View
+            android:layout_width="340dp"
+            android:layout_height="17.5dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="115dp"
+            android:background="@drawable/result_detail_time_bar" />
+
+        <View
+            android:layout_width="360dp"
+            android:layout_height="2dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="146dp"
+            android:background="@drawable/result_detail_line" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="670dp"
+            android:background="@drawable/bottom_banner" />
+
+        <Button
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/back_btn" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="395dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="62dp"
+            android:layout_marginTop="187dp"
+            android:background="@drawable/result_detail_vertical_bar" />
+
+        <View
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="165dp"
+            android:background="@drawable/result_detail_start" />
+
+        <View
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="360dp"
+            android:background="@drawable/result_detail_transfer" />
+
+        <View
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="560dp"
+            android:background="@drawable/result_detail_arrival" />
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="35dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="155dp"
+            android:layout_marginTop="625dp"
+            android:background="@drawable/result_detail_share_btn"/>
+
+        <CheckBox
+            android:id="@+id/btn_selector"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="265dp"
+            android:layout_marginTop="625dp"
+            android:button="@drawable/alarm_off"
+            android:background="@drawable/result_detail_alarm_btn" />
+
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>
