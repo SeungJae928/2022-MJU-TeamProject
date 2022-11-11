@@ -12,9 +12,9 @@
         android:layout_height="fill_parent"
         android:background="@drawable/login_background"
         android:clipToOutline="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:ignore="MissingConstraints,RedundantNamespace,UnusedAttribute"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        tools:layout_editor_absoluteX="0dp">
 
         <View
             android:layout_width="match_parent"
@@ -51,15 +51,6 @@
             android:layout_marginLeft="25dp"
             android:layout_marginTop="146dp"
             android:background="@drawable/result_detail_line" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="63dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="0dp"
-            android:layout_marginTop="670dp"
-            android:background="@drawable/bottom_banner" />
 
         <Button
             android:layout_width="35dp"
@@ -113,18 +104,53 @@
             android:layout_alignParentTop="true"
             android:layout_marginLeft="155dp"
             android:layout_marginTop="625dp"
-            android:background="@drawable/result_detail_share_btn"/>
+            android:background="@drawable/result_detail_share_btn" />
 
         <CheckBox
             android:id="@+id/btn_selector"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="265dp"
-            android:layout_marginTop="625dp"
-            android:button="@drawable/alarm_off"
-            android:background="@drawable/result_detail_alarm_btn" />
+            android:layout_marginLeft="372dp"
+            android:layout_marginTop="12dp"
+            android:button="@drawable/alarm_off" />
+
+        <Button
+            android:layout_width="13dp"
+            android:layout_height="11dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="225dp"
+            android:layout_marginTop="534dp"
+            android:background="@drawable/result_detail_open_btn" />
+
+        <Button
+            android:layout_width="13dp"
+            android:layout_height="11dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="224dp"
+            android:layout_marginTop="338dp"
+            android:background="@drawable/result_detail_open_btn" />
+
+        <View
+            android:layout_width="44dp"
+            android:layout_height="26dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="260dp"
+            android:layout_marginTop="250dp"
+            android:background="@drawable/result_detail_state_1" />
+
+        <View
+            android:layout_width="44dp"
+            android:layout_height="26dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="260dp"
+            android:layout_marginTop="450dp"
+            android:background="@drawable/result_detail_state_2" />
 
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
