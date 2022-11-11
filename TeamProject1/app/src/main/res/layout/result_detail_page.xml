@@ -103,7 +103,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="155dp"
-            android:layout_marginTop="625dp"
+            android:layout_marginTop="615dp"
             android:background="@drawable/result_detail_share_btn" />
 
         <CheckBox
@@ -149,7 +149,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="260dp"
-            android:layout_marginTop="450dp"
+            android:layout_marginTop="430dp"
             android:background="@drawable/result_detail_state_2" />
 
     </RelativeLayout>
