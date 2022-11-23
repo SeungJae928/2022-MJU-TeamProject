@@ -1,5 +1,6 @@
 package com.example.teamproject1;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,10 +14,10 @@ import java.util.List;
 public class LoginActivity extends AppCompatActivity{
 
     private UserDBHelper db;
-    private EditText userID, userPassword;
-    private Button login_button, signup_button;
-    private SQLiteDatabase sqLiteDatabase;
     private List<User> userList;
+    private EditText userID, userPassword;
+    private Button login_button, join_button;
+    private SQLiteDatabase sqLiteDatabase;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,7 @@ public class LoginActivity extends AppCompatActivity{
         userID = findViewById(R.id.userID);
         userPassword = findViewById(R.id.userPassword);
         login_button = findViewById(R.id.login_button);
+
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
@@ -37,9 +39,19 @@ public class LoginActivity extends AppCompatActivity{
 
                 if(SignIn(uID, uPW)) {
                     //ToDo 로그인 이후 화면 전환 및 현재 유저 정보 저장
+                    System.out.println("로그인 성공");
                 } else {
                     Toast.makeText(getApplicationContext(), "잘못된 회원정보입니다.", Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+
+        join_button = findViewById(R.id.join_button);
+        join_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(getApplicationContext(), JoinActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -56,33 +68,12 @@ public class LoginActivity extends AppCompatActivity{
                 break;
             }
         }
-
-        System.out.println(user.getPw() + " " + pw);
+        
         if(user.getPw().equals(pw)){
             return true;
         } else {
             return false;
         }
-    }
-
-    //회원가입 - DB 입력 정상적으로 되는거 체크 완료
-    public boolean SignUp(String id, String pw, String name) {
-        if(verification(id)){
-            db.insertData(id, pw, name);
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    //아이디 중복 확인 - 중복데이터 안들어가는거 체크 완료
-    public boolean verification(String id){
-        for(User u: userList){
-            if(u.getId().equals(id)){
-                return false;
-            }
-        }
-        return true;
     }
 
 }
