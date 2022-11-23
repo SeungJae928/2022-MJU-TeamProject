@@ -140,8 +140,8 @@ class UserDBHelper extends SQLiteOpenHelper {
                     // id, name, account, privateKey, secretKey, Comment
                     user.setSid(mCur.getString(0));
                     user.setId(mCur.getString(1));
-                    user.setName(mCur.getString(2));
-                    user.setPw(mCur.getString(3));
+                    user.setPw(mCur.getString(2));
+                    user.setName(mCur.getString(3));
 
                     // 리스트에 넣기
                     userList.add(user);
