@@ -23,6 +23,16 @@ class UserDBHelper extends SQLiteOpenHelper {
     public static final String COL_3="userPW";
     public static final String COL_4="name";
 
+    public static final String TABLE_NAME2= "Favorite";
+    public static final String COL_1_2="ID";
+    public static final String COL_2_2="userID";
+    public static final String COL_3_2="Station";
+
+    public static final String TABLE_NAME3= "RecentlyUsed";
+    public static final String COL_1_3="ID";
+    public static final String COL_2_3="userID";
+    public static final String COL_3_3="Station";
+
     private SQLiteDatabase sDB;
 
     public UserDBHelper(@Nullable Context context){
@@ -38,6 +48,14 @@ class UserDBHelper extends SQLiteOpenHelper {
                 + COL_2 + " TEXT, "
                 + COL_3 + " TEXT, "
                 + COL_4 + " TEXT); ");
+        db.execSQL("CREATE TABLE " + TABLE_NAME2
+                + " (" + COL_1_2 + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + COL_2_2 + " TEXT, "
+                + COL_3_2 + " TEXT); ");
+        db.execSQL("CREATE TABLE " + TABLE_NAME3
+                + " (" + COL_1_3 + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + COL_2_3 + " TEXT, "
+                + COL_3_3 + " TEXT); ");
     }
 
     //버전 업그레이드
@@ -48,7 +66,7 @@ class UserDBHelper extends SQLiteOpenHelper {
     }
 
     //테이블에 정보 넣기
-    public boolean insertData(String userID, String userPW, String name){
+    public boolean insertDatatoUser(String userID, String userPW, String name){
         SQLiteDatabase db= this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_2,userID);
@@ -56,6 +74,38 @@ class UserDBHelper extends SQLiteOpenHelper {
         contentValues.put(COL_4,name);
 
         long result = db.insert(TABLE_NAME,null,contentValues);
+
+        if(result == -1){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    public boolean insertDatatoFavorite(String userID, String station){
+        SQLiteDatabase db= this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_2_2,userID);
+        contentValues.put(COL_3_2,station);
+
+        long result = db.insert(TABLE_NAME2,null,contentValues);
+
+        if(result == -1){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    public boolean insertDatatoRecentlyUsed(String userID, String station){
+        SQLiteDatabase db= this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_2_3,userID);
+        contentValues.put(COL_3_3,station);
+
+        long result = db.insert(TABLE_NAME3,null,contentValues);
 
         if(result == -1){
             return false;
@@ -113,7 +163,7 @@ class UserDBHelper extends SQLiteOpenHelper {
 //        super.close();
 //    }
 
-    public List getTableData()
+    public List getUserData()
     {
         sDB = this.getReadableDatabase();
         try
@@ -149,6 +199,43 @@ class UserDBHelper extends SQLiteOpenHelper {
 
             }
             return userList;
+        }
+        catch (SQLException mSQLException)
+        {
+            Log.e("11", "getTestData >>"+ mSQLException.toString());
+            throw mSQLException;
+        }
+    }
+
+    public List getFavoriteData()
+    {
+        sDB = this.getReadableDatabase();
+        try
+        {
+            String sql ="SELECT * FROM " + TABLE_NAME2;
+
+            List favoriteList = new ArrayList();
+
+            Favorites favorites = null;
+
+            Cursor mCur = sDB.rawQuery(sql, null);
+            if (mCur!=null)
+            {
+                // 칼럼의 마지막까지
+                while( mCur.moveToNext() ) {
+
+                    favorites = new Favorites();
+
+                    favorites.setSid(mCur.getString(0));
+                    favorites.setUserSid(mCur.getString(1));
+                    favorites.setStation(mCur.getString(2));
+
+                    // 리스트에 넣기
+                    favoriteList.add(favorites);
+                }
+
+            }
+            return favoriteList;
         }
         catch (SQLException mSQLException)
         {

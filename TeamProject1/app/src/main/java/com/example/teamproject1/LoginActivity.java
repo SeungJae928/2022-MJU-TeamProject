@@ -25,7 +25,7 @@ public class LoginActivity extends AppCompatActivity{
         setContentView(R.layout.login_page_layout);
 
         db = new UserDBHelper(LoginActivity.this);
-        userList = db.getTableData();
+        userList = db.getUserData();
 
         userID = findViewById(R.id.userID);
         userPassword = findViewById(R.id.userPassword);
@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity{
                 final String uPW = userPassword.getText().toString();
 
                 if(SignIn(uID, uPW)) {
-                    //ToDo 로그인 이후 화면 전환 및 현재 유저 정보 저장
+                    //ToDo 로그인 이후 화면 전환 및 현재 유저 정보(SID 정도만?) 저장
                     System.out.println("로그인 성공");
                 } else {
                     Toast.makeText(getApplicationContext(), "잘못된 회원정보입니다.", Toast.LENGTH_LONG).show();

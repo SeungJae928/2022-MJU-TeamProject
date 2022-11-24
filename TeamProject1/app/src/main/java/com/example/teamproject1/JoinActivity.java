@@ -24,7 +24,7 @@ public class JoinActivity extends AppCompatActivity {
         setContentView(R.layout.join_page_layout);
 
         db = new UserDBHelper(JoinActivity.this);
-        userList = db.getTableData();
+        userList = db.getUserData();
         isChecked = false;
 
         verification_button = findViewById(R.id.verification_button);
@@ -73,7 +73,7 @@ public class JoinActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "ID 중복 확인을 해주세요.", Toast.LENGTH_LONG).show();
             return false;
         } else {
-            db.insertData(id, pw, name);
+            db.insertDatatoUser(id, pw, name);
             return true;
         }
     }
