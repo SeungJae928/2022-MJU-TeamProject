@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".FindActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:background="@color/mainblue"
+        android:paddingStart="45dp"
+        android:paddingTop="25dp"
+        android:paddingEnd="0dp"
+        android:paddingBottom="0dp">
+
+        <SearchView
+            android:id="@+id/searchView_start"
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:background="@drawable/radius_whiteblue"
+            android:iconifiedByDefault="false"
+            android:queryHint="출발역을 입력하세요." />
+
+        <SearchView
+            android:id="@+id/searchView_middle"
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="57dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/radius_whiteblue"
+            android:iconifiedByDefault="false"
+            android:queryHint="경유역을 입력하세요." />
+
+
+        <SearchView
+            android:id="@+id/searchView_end"
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="114dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/radius_whiteblue"
+            android:iconifiedByDefault="false"
+            android:queryHint="도착역을 입력하세요." />
+
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:id="@+id/clockView"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/lightgray"
+            android:gravity="start|center"
+            android:paddingStart="15dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="0dp"
+            android:paddingBottom="5dp"
+            android:text="@string/text_time"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+
+        <Button
+            android:id="@+id/sort_button"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_gravity="end"
+            android:onClick="mOnClick"
+            android:text="@string/sort_button"
+            android:textSize="13sp"
+            tools:ignore="TouchTargetSizeCheck" />
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="200dp"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/startTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="@string/spend_time"
+                android:textSize="27sp"
+                android:textStyle="bold"
+                android:typeface="normal" />
+
+            <View
+                android:layout_width="130dp"
+                android:layout_height="3dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/information"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/information" />
+
+            <TextView
+                android:id="@+id/station1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/elipse_whiteblue"
+                android:gravity="center"
+                android:text="@string/station1"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <View
+                android:id="@+id/line1_1"
+                android:layout_width="5dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="38dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/spend_time1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:text="@string/spend1" />
+
+            <View
+                android:id="@+id/line1_2"
+                android:layout_width="5dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="38dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/station2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/elipse_whiteblue"
+                android:gravity="center"
+                android:text="@string/station2"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <View
+                android:id="@+id/line2_1"
+                android:layout_width="5dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="38dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/spend_time2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:text="@string/spend2" />
+
+            <View
+                android:id="@+id/line2_2"
+                android:layout_width="5dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="38dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/station3"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/elipse_whiteblue"
+                android:gravity="center"
+                android:text="@string/station3"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>
+

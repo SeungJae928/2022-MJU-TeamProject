@@ -2,11 +2,12 @@ package com.example.teamproject1;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
 
@@ -22,6 +23,8 @@ public class JoinActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.join_page_layout);
+
+        System.out.println("hi");
 
         db = new UserDBHelper(JoinActivity.this);
         userList = db.getUserData();
@@ -58,6 +61,7 @@ public class JoinActivity extends AppCompatActivity {
                 if(isChecked && Join(uID, uPW, uName)){
                     Join(uID, uPW, uName);
                     Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                 } else {
                     Toast.makeText(getApplicationContext(), "ID 중복 확인을 해주세요.", Toast.LENGTH_LONG).show();

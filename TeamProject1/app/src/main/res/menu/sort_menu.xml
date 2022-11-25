@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/best" android:title="@string/best" />
+    <item android:id="@+id/fast" android:title="@string/fast" />
+    <item android:id="@+id/minimum" android:title="@string/minimum" />
+
+</menu>

@@ -6,8 +6,9 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.support.annotation.Nullable;
 import android.util.Log;
+
+import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -116,10 +117,20 @@ class UserDBHelper extends SQLiteOpenHelper {
     }
 
     //선택한 데이터만 조회
-    public Cursor getOneData(String name){
-        SQLiteDatabase db= this.getWritableDatabase();
-        Cursor res = db.rawQuery("select * from "+ TABLE_NAME+ " where name='"+name+"'",null);
-        return res;
+    public User getUserDatabyId(String id){
+        sDB = this.getWritableDatabase();
+        Cursor res = sDB.rawQuery("select * from "+ TABLE_NAME+ " where userID='"+id+"';",null);
+        res.moveToFirst();
+
+        User user = new User();
+
+
+        user.setSid(res.getString(0));
+        user.setId(res.getString(1));
+        user.setPw(res.getString(2));
+        user.setName(res.getString(3));
+
+        return user;
     }
 
     //데이터 전체 조회
@@ -168,7 +179,6 @@ class UserDBHelper extends SQLiteOpenHelper {
         sDB = this.getReadableDatabase();
         try
         {
-            // Table 이름 -> antpool_bitcoin 불러오기
             String sql ="SELECT * FROM " + TABLE_NAME;
 
             // 모델 넣을 리스트 생성
@@ -187,7 +197,6 @@ class UserDBHelper extends SQLiteOpenHelper {
                     user = new User();
 
                     // TODO : Record 기술
-                    // id, name, account, privateKey, secretKey, Comment
                     user.setSid(mCur.getString(0));
                     user.setId(mCur.getString(1));
                     user.setPw(mCur.getString(2));

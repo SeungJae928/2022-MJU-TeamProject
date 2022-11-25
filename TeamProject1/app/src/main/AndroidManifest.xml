@@ -27,6 +27,10 @@
         </activity>
         <activity android:name=".LoginActivity"/>
         <activity android:name=".JoinActivity"/>
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".RecentlyUsedActivity"/>
+        <activity android:name=".FindActivity"/>
+        <activity android:name=".SearchActivity"/>
     </application>
 
 </manifest>
