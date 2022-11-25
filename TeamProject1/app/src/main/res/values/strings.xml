@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">TeamProject1</string>
+    <string name="b_t_s_best_transfer_in_subway">B.T.S (Best transfer in Subway)</string>
+    <string name="todo">TODO</string>
+    <string name="search_history">최근 검색 기록</string>
+    <string name="text_time">OO월 OO일 OO시 OO분</string>
+    <string name="best">최적 경로</string>
+    <string name="fast">최단 시간</string>
+    <string name="minimum">최소 환승</string>
+    <string name="spend_time">1시간 32분</string>
+    <string name="sort_button">정렬 버튼</string>
+    <string name="information">환승 1회, 도보 7분, 1,650원</string>
+    <string name="station1">1</string>
+    <string name="station2">2</string>
+    <string name="station3">3</string>
+    <string name="spend1">OO분</string>
+    <string name="spend2">OO분</string>
+</resources>
