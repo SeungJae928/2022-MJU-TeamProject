@@ -59,4 +59,16 @@ public class User {
     public void setRecentList(List<Recent> recentList) {
         this.recentList = recentList;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "sid='" + sid + '\'' +
+                ", id='" + id + '\'' +
+                ", pw='" + pw + '\'' +
+                ", name='" + name + '\'' +
+                ", favoritesList=" + favoritesList +
+                ", recentList=" + recentList +
+                '}';
+    }
 }
