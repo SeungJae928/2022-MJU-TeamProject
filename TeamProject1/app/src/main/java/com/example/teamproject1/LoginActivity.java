@@ -55,6 +55,9 @@ public class LoginActivity extends AppCompatActivity {
                     if (SignIn(uID, uPW)) {
                         //ToDo 로그인 이후 화면 전환 및 현재 유저 정보(SID 정도만?) 저장
                         System.out.println("로그인 성공");
+                        for (User u : userList){
+                            System.out.println(u);
+                        }
                         userSid = db.getUserDatabyId(uID).getSid();
                     } else {
                         Toast.makeText(getApplicationContext(), "잘못된 회원정보입니다.", Toast.LENGTH_LONG).show();
