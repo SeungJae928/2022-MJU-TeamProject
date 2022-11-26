@@ -18,6 +18,7 @@ public class JoinActivity extends AppCompatActivity {
     private UserDBHelper db;
     private List<User> userList;
     private boolean isChecked;
+    private String verificated_ID;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class JoinActivity extends AppCompatActivity {
                 final String uID = joinID.getText().toString();
 
                 if(verification(uID)){
+                    verificated_ID = uID;
                     isChecked = true;
                     Toast.makeText(getApplicationContext(), "사용가능한 ID입니다.", Toast.LENGTH_LONG).show();
                 } else {
@@ -56,13 +58,16 @@ public class JoinActivity extends AppCompatActivity {
                 final String uPW = joinPassword.getText().toString();
                 final String uName = joinName.getText().toString();
 
-                if(isChecked && Join(uID, uPW, uName)){
-                    Join(uID, uPW, uName);
-                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
+                if(!uID.equals("") && !uPW.equals("") && !uName.equals("")){
+                    if(verificated_ID.equals(uID) && isChecked && Join(uID, uPW, uName)){
+                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(getApplicationContext(), "ID 중복 확인을 해주세요.", Toast.LENGTH_LONG).show();
+                    }
                 } else {
-                    Toast.makeText(getApplicationContext(), "ID 중복 확인을 해주세요.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "회원 정보를 입력해주세요.", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -72,8 +77,7 @@ public class JoinActivity extends AppCompatActivity {
     //회원가입 - DB 입력 정상적으로 되는거 체크 완료
     public boolean Join(String id, String pw, String name) {
         if(!verification(id)){
-            Toast.makeText(getApplicationContext(), "ID 중복 확인을 해주세요.", Toast.LENGTH_LONG).show();
-            return false;
+             return false;
         } else {
             db.insertDatatoUser(id, pw, name);
             return true;
