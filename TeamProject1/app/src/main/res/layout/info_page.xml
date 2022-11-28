@@ -8,10 +8,8 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="85dp"
-        android:layout_marginBottom="805dp"
         android:background="#3F9CF1"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -31,17 +29,17 @@
                 android:layout_marginStart="30dp"
                 android:background="@drawable/shape_oval"
                 android:text="4"
-                android:textSize="35dp"
                 android:textAlignment="center"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:textSize="35dp" />
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="65dp"
+                android:layout_width="54dp"
                 android:layout_height="34dp"
                 android:layout_gravity="center|center_horizontal"
                 android:layout_marginStart="70dp"
-
+                android:text="401"
                 android:textColor="#000000"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -49,31 +47,32 @@
     </LinearLayout>
 
     <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="355dp"
-        android:layout_height="748dp"
+        android:layout_height="600dp"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="28dp"
         android:layout_marginBottom="28dp"
+        android:background="@drawable/radius_layout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        android:background="@drawable/radius_layout">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="66dp"
-            android:layout_height="55dp"
-            android:layout_marginStart="60dp"
+            android:layout_width="56dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="70dp"
             android:layout_marginTop="10dp"
-            app:srcCompat="@drawable/roc_icon"
-            android:contentDescription="@string/todo" />
+            android:contentDescription="@string/todo"
+            app:srcCompat="@drawable/roc_icon" />
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="66dp"
-            android:layout_height="55dp"
+            android:layout_width="56dp"
+            android:layout_height="45dp"
             android:layout_marginStart="210dp"
             android:layout_marginTop="10dp"
             app:srcCompat="@drawable/star_icon" />
@@ -82,32 +81,33 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="73dp"
-            android:layout_marginTop="70dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="60dp"
+            android:text="노선도"
             android:textColor="#000000"
             android:textStyle="bold" />
 
         <View
             android:layout_width="1dp"
             android:layout_height="50dp"
-            android:layout_marginTop="30dp"
             android:layout_marginStart="170dp"
-            android:background="#33000000" />
+            android:layout_marginTop="20dp"
+            android:background="#33000000"></View>
 
         <View
             android:layout_width="290dp"
             android:layout_height="2dp"
-            android:layout_marginTop="100dp"
             android:layout_marginStart="26dp"
-            android:background="#330007B5">
-        </View>
+            android:layout_marginTop="90dp"
+            android:background="#330007B5"></View>
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="217dp"
-            android:layout_marginTop="70dp"
+            android:layout_marginStart="215dp"
+            android:layout_marginTop="60dp"
+            android:text="즐겨찾기"
             android:textColor="#000000"
             android:textStyle="bold" />
 
@@ -116,7 +116,7 @@
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="135dp"
+            android:layout_marginTop="115dp"
             app:srcCompat="@drawable/subway_icon" />
 
         <TextView
@@ -124,7 +124,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="60dp"
-            android:layout_marginTop="132dp"
+            android:layout_marginTop="112dp"
             android:text="역내 정보"
             android:textColor="#000000" />
 
@@ -132,8 +132,8 @@
             android:layout_width="132dp"
             android:layout_height="70dp"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="162dp"
-            android:background="@drawable/radius_sub_layout" >
+            android:layout_marginTop="142dp"
+            android:background="@drawable/radius_sub_layout">
 
             <TextView
                 android:id="@+id/textView8"
@@ -141,29 +141,29 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="33dp"
                 android:layout_marginTop="5dp"
-                android:textSize="12sp"
+                android:text="역내 혼잡도"
                 android:textColor="#000000"
-                android:textStyle="bold"
-                android:text="역내 혼잡도" />
+                android:textSize="12dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="35dp"
                 android:layout_marginStart="50dp"
-                android:textSize="15sp"
+                android:layout_marginTop="35dp"
+                android:text="혼잡"
                 android:textColor="#F20505"
-                android:textStyle="bold"
-                android:text="혼잡" />
+                android:textSize="15dp"
+                android:textStyle="bold" />
         </FrameLayout>
 
         <FrameLayout
             android:layout_width="132dp"
             android:layout_height="70dp"
             android:layout_marginStart="180dp"
-            android:layout_marginTop="162dp"
-            android:background="@drawable/radius_sub_layout" >
+            android:layout_marginTop="142dp"
+            android:background="@drawable/radius_sub_layout">
 
             <TextView
                 android:id="@+id/textView9"
@@ -171,21 +171,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="29dp"
                 android:layout_marginTop="5dp"
-                android:textSize="12dp"
+                android:text="도착 예상 시간"
                 android:textColor="#000000"
-                android:textStyle="bold"
-                android:text="도착 예상 시간" />
+                android:textSize="12dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="35dp"
                 android:layout_marginStart="30dp"
-                android:textSize="15dp"
+                android:layout_marginTop="35dp"
+                android:text="5분 후 도착"
                 android:textColor="#F20505"
-                android:textStyle="bold"
-                android:text="5분 후 도착" />
+                android:textSize="15dp"
+                android:textStyle="bold" />
         </FrameLayout>
 
         <ImageView
@@ -193,7 +193,7 @@
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="280dp"
+            android:layout_marginTop="230dp"
             app:srcCompat="@drawable/schedule_icon" />
 
         <TextView
@@ -201,29 +201,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="60dp"
-            android:layout_marginTop="277dp"
+            android:layout_marginTop="227dp"
             android:text="시간표"
             android:textColor="#000000" />
 
         <FrameLayout
             android:layout_width="280dp"
-            android:layout_height="250dp"
+            android:layout_height="225dp"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="305dp"
+            android:layout_marginTop="255dp"
             android:background="@drawable/radius_sub_layout">
 
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="2dp"
                 android:layout_marginTop="40dp"
-                android:background="#330007B5" />
+                android:background="#330007B5"></View>
 
             <View
                 android:layout_width="2dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
                 android:layout_marginStart="140dp"
-                android:background="#330007B5" />
+                android:layout_marginTop="40dp"
+                android:background="#330007B5"></View>
 
             <TextView
                 android:id="@+id/textView12"
@@ -231,10 +231,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="12dp"
-                android:textSize="12sp"
+                android:text="101 방향"
                 android:textColor="#000000"
-                android:textStyle="bold"
-                android:text="101 방향" />
+                android:textSize="12dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView13"
@@ -242,10 +242,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="190dp"
                 android:layout_marginTop="12dp"
-                android:textSize="12sp"
+                android:text="505 방향"
                 android:textColor="#000000"
-                android:textStyle="bold"
-                android:text="505 방향" />
+                android:textSize="12dp"
+                android:textStyle="bold" />
 
 
         </FrameLayout>
@@ -255,7 +255,7 @@
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="600dp"
+            android:layout_marginTop="495dp"
             app:srcCompat="@drawable/i_icon" />
 
         <TextView
@@ -263,7 +263,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="60dp"
-            android:layout_marginTop="597dp"
+            android:layout_marginTop="492dp"
             android:text="시설 정보"
             android:textColor="#000000" />
 
@@ -271,44 +271,44 @@
             android:layout_width="280dp"
             android:layout_height="70dp"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="625dp"
-            android:background="@drawable/radius_sub_layout" >
+            android:layout_marginTop="520dp"
+            android:background="@drawable/radius_sub_layout">
 
             <ImageView
                 android:id="@+id/imageView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
                 app:srcCompat="@drawable/toilet_icon" />
 
             <ImageView
                 android:id="@+id/imageView9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
                 android:layout_marginStart="10dp"
+                android:layout_marginTop="40dp"
                 app:srcCompat="@drawable/etc_icon" />
 
             <TextView
                 android:id="@+id/textView14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="17dp"
                 android:layout_marginStart="30dp"
-                android:textSize="12sp"
+                android:layout_marginTop="17dp"
+                android:text="개찰구 내 화장실"
                 android:textColor="#000000"
-                android:text="개찰구 내 화장실" />
+                android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/textView15"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="37dp"
                 android:layout_marginStart="30dp"
-                android:textSize="12sp"
+                android:layout_marginTop="37dp"
+                android:text="편의점, 자판기, 안내 센터, 무인 민원 발급기"
                 android:textColor="#000000"
-                android:text="편의점, 자판기, 안내 센터, 무인 민원 발급기" />
+                android:textSize="12dp" />
         </FrameLayout>
 
     </FrameLayout>

@@ -9,17 +9,1257 @@
     android:textAlignment="center"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="550dp"
-        android:src="@drawable/map"
+        android:layout_height="match_parent">
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/navigationView"
-        android:contentDescription="@string/todo" />
+        <com.example.teamproject1.ZoomableViewGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/map"
+                    android:layout_width="392dp"
+                    android:layout_height="292dp"
+                    android:layout_marginBottom="304dp"
+                    android:background="@drawable/map"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <Button
+                    android:id="@+id/station_101"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginEnd="371dp"
+                    android:layout_marginBottom="139.5dp"
+                    android:background="@drawable/transfer_station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_102"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="371dp"
+                    android:layout_marginBottom="114.25dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_103"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="371dp"
+                    android:layout_marginBottom="86dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_104"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginEnd="371dp"
+                    android:layout_marginBottom="58dp"
+                    android:background="@drawable/transfer_station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_105"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="371.5dp"
+                    android:layout_marginBottom="30dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_106"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="358dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_107"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginEnd="328dp"
+                    android:layout_marginBottom="9dp"
+                    android:background="@drawable/transfer_station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_108"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="306.5dp"
+                    android:layout_marginBottom="9.5dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_109"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginEnd="285dp"
+                    android:layout_marginBottom="9dp"
+                    android:background="@drawable/transfer_station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_110"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="256dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_111"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="226.5dp"
+                    android:layout_marginBottom="9.7dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_112"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginEnd="197dp"
+                    android:layout_marginBottom="9dp"
+                    android:background="@drawable/transfer_station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_114"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="150dp"
+                    android:layout_marginBottom="32dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_115"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginEnd="150dp"
+                    android:layout_marginBottom="58dp"
+                    android:background="@drawable/transfer_station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_113"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="163dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_116"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginEnd="150dp"
+                    android:layout_marginBottom="95dp"
+                    android:background="@drawable/transfer_station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_117"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="150dp"
+                    android:layout_marginBottom="114.7dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_118"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="154dp"
+                    android:layout_marginBottom="146.2dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_119"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginEnd="197dp"
+                    android:layout_marginBottom="154dp"
+                    android:background="@drawable/transfer_station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_120"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="227dp"
+                    android:layout_marginBottom="154dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_121"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginEnd="255.4dp"
+                    android:layout_marginBottom="154dp"
+                    android:background="@drawable/transfer_station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_122"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginEnd="284dp"
+                    android:layout_marginBottom="154dp"
+                    android:background="@drawable/transfer_station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_123"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginEnd="328.5dp"
+                    android:layout_marginBottom="154dp"
+                    android:background="@drawable/transfer_station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_201"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="371dp"
+                    android:layout_marginBottom="177dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_202"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="370.3dp"
+                    android:layout_marginBottom="200.3dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_203"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="370.3dp"
+                    android:layout_marginBottom="222.3dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_204"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="371dp"
+                    android:layout_marginBottom="245.4dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_205"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="370.5dp"
+                    android:layout_marginBottom="267.5dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_206"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="349.8dp"
+                    android:layout_marginBottom="267.8dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_207"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginEnd="329.3dp"
+                    android:layout_marginBottom="267.3dp"
+                    android:background="@drawable/transfer_station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_208"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="308dp"
+                    android:layout_marginBottom="267dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_209"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginEnd="284dp"
+                    android:layout_marginBottom="267dp"
+                    android:background="@drawable/transfer_station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_210"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="257dp"
+                    android:layout_marginBottom="269dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_211"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginEnd="197dp"
+                    android:layout_marginBottom="268dp"
+                    android:background="@drawable/transfer_station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_212"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="170dp"
+                    android:layout_marginBottom="269dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_213"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="137dp"
+                    android:layout_marginBottom="268.7dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_214"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginEnd="108dp"
+                    android:layout_marginBottom="267dp"
+                    android:background="@drawable/transfer_station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_215"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="83dp"
+                    android:layout_marginBottom="267dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_216"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginEnd="58dp"
+                    android:layout_marginBottom="267dp"
+                    android:background="@drawable/transfer_station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_217"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="14dp"
+                    android:layout_marginBottom="268dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_301"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="330dp"
+                    android:layout_marginBottom="245.8dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_302"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="330dp"
+                    android:layout_marginBottom="222dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_303"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginEnd="329dp"
+                    android:layout_marginBottom="200dp"
+                    android:background="@drawable/transfer_station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_304"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="329.5dp"
+                    android:layout_marginBottom="176.4dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_305"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="328.5dp"
+                    android:layout_marginBottom="114dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_306"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="329.5dp"
+                    android:layout_marginBottom="85dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_307"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginEnd="328dp"
+                    android:layout_marginBottom="57dp"
+                    android:background="@drawable/transfer_station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_308"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="328.8dp"
+                    android:layout_marginBottom="30dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_401"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="349dp"
+                    android:layout_marginBottom="58dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_402"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="307dp"
+                    android:layout_marginBottom="58dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_403"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginEnd="284dp"
+                    android:layout_marginBottom="57dp"
+                    android:background="@drawable/transfer_station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_404"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="256dp"
+                    android:layout_marginBottom="58.7dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_405"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="227dp"
+                    android:layout_marginBottom="58dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_406"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginEnd="198dp"
+                    android:layout_marginBottom="58dp"
+                    android:background="@drawable/transfer_station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_407"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="173.3dp"
+                    android:layout_marginBottom="58.7dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_408"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="130.5dp"
+                    android:layout_marginBottom="58dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_409"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="109dp"
+                    android:layout_marginBottom="57.3dp"
+                    android:background="@drawable/transfer_station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_410"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="82.7dp"
+                    android:layout_marginBottom="57.8dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_411"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="58.3dp"
+                    android:layout_marginBottom="58.3dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_412"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginEnd="58.3dp"
+                    android:layout_marginBottom="94dp"
+                    android:background="@drawable/transfer_station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_413"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="58.3dp"
+                    android:layout_marginBottom="114dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_414"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="58dp"
+                    android:layout_marginBottom="147dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_415"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="58.3dp"
+                    android:layout_marginBottom="177.3dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_416"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginEnd="57dp"
+                    android:layout_marginBottom="199dp"
+                    android:background="@drawable/transfer_station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_417"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginEnd="58dp"
+                    android:layout_marginBottom="239.5dp"
+                    android:background="@drawable/transfer_station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_501"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="285dp"
+                    android:layout_marginBottom="246dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_502"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="285dp"
+                    android:layout_marginBottom="222dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_503"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginEnd="285dp"
+                    android:layout_marginBottom="199dp"
+                    android:background="@drawable/transfer_station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_504"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="285dp"
+                    android:layout_marginBottom="177dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_505"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="286dp"
+                    android:layout_marginBottom="114dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_506"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="285dp"
+                    android:layout_marginBottom="86dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_507"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="285dp"
+                    android:layout_marginBottom="30.3dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_601"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginEnd="254dp"
+                    android:layout_marginBottom="198dp"
+                    android:background="@drawable/transfer_station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_602"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="256dp"
+                    android:layout_marginBottom="176.5dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_603"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="255.3dp"
+                    android:layout_marginBottom="115dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_604"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="226dp"
+                    android:layout_marginBottom="94.8dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_605"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginEnd="197dp"
+                    android:layout_marginBottom="94dp"
+                    android:background="@drawable/transfer_station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_606"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="174dp"
+                    android:layout_marginBottom="94.8dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_607"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="132dp"
+                    android:layout_marginBottom="95dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_608"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginEnd="109dp"
+                    android:layout_marginBottom="95dp"
+                    android:background="@drawable/transfer_station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_609"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="82.5dp"
+                    android:layout_marginBottom="94.5dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_610"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="28.8dp"
+                    android:layout_marginBottom="94.5dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_611"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="14dp"
+                    android:layout_marginBottom="114dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_612"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="15.8dp"
+                    android:layout_marginBottom="146.5dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_613"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="15.8dp"
+                    android:layout_marginBottom="177dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_614"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginEnd="13.7dp"
+                    android:layout_marginBottom="199dp"
+                    android:background="@drawable/transfer_station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_615"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="14.4dp"
+                    android:layout_marginBottom="220.5dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_616"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="37.6dp"
+                    android:layout_marginBottom="240dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_617"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="83dp"
+                    android:layout_marginBottom="239dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_618"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginEnd="109dp"
+                    android:layout_marginBottom="238.3dp"
+                    android:background="@drawable/transfer_station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_619"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="137dp"
+                    android:layout_marginBottom="239dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_620"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="169dp"
+                    android:layout_marginBottom="239.4dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_621"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginEnd="197dp"
+                    android:layout_marginBottom="239dp"
+                    android:background="@drawable/transfer_station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_622"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="226.5dp"
+                    android:layout_marginBottom="239dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_701"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="226.4dp"
+                    android:layout_marginBottom="199.8dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_702"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginEnd="197dp"
+                    android:layout_marginBottom="200dp"
+                    android:background="@drawable/transfer_station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_703"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="169.3dp"
+                    android:layout_marginBottom="200dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_704"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="137dp"
+                    android:layout_marginBottom="200.3dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_705"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginEnd="108dp"
+                    android:layout_marginBottom="200dp"
+                    android:background="@drawable/transfer_station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_706"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="82dp"
+                    android:layout_marginBottom="200dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_707"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="35dp"
+                    android:layout_marginBottom="200dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_801"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="133.3dp"
+                    android:layout_marginBottom="9.4dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_802"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="111dp"
+                    android:layout_marginBottom="9.8dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_803"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="109.7dp"
+                    android:layout_marginBottom="32.4dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_804"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="109dp"
+                    android:layout_marginBottom="114dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_805"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="109dp"
+                    android:layout_marginBottom="146dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_806"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="109.3dp"
+                    android:layout_marginBottom="177.3dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_901"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="197dp"
+                    android:layout_marginBottom="32.7dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_902"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="197.3dp"
+                    android:layout_marginBottom="114.3dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_903"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="197dp"
+                    android:layout_marginBottom="177.3dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+
+                <Button
+                    android:id="@+id/station_904"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="198dp"
+                    android:layout_marginBottom="222dp"
+                    android:background="@drawable/station_button"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/map"
+                    app:layout_constraintEnd_toEndOf="@+id/map" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.example.teamproject1.ZoomableViewGroup>
+
+
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/footer"
@@ -38,7 +1278,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="15dp" />
+            android:layout_marginBottom="15dp"
+            android:text="현존하는 최고의 지하철 길찾기 앱!!"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/textView2"
