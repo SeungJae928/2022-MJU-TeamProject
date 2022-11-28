@@ -25,8 +25,6 @@ public class JoinActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.join_page_layout);
 
-        System.out.println("hi");
-
         db = new UserDBHelper(JoinActivity.this);
         userList = db.getUserData();
         isChecked = false;

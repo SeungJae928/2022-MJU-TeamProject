@@ -3,6 +3,7 @@
 
     <item android:id="@+id/best" android:title="@string/best" />
     <item android:id="@+id/fast" android:title="@string/fast" />
+    <item android:id="@+id/min_amount" android:title="@string/min_amount" />
     <item android:id="@+id/minimum" android:title="@string/minimum" />
 
 </menu>
