@@ -21,6 +21,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.example.teamproject1.R;
@@ -42,7 +43,7 @@ public class FindActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Button mButton, addButton;
+        Button mButton, addButton, alarmButton;
         d = new Dijkstra(this);
 
         androidx.appcompat.widget.Toolbar toolbar;
@@ -76,6 +77,14 @@ public class FindActivity extends AppCompatActivity {
         MainTimerTask timerTask = new MainTimerTask();
         mTimer = new Timer();
         mTimer.schedule(timerTask, 500, 1000);
+
+        alarmButton = findViewById(R.id.alarm_btn);
+        alarmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "하차 알림을 시작합니다.", Toast.LENGTH_LONG).show();
+            }
+        });
 
         // 액션바 숨기기
         ActionBar actionBar = getSupportActionBar();
@@ -150,8 +159,7 @@ public class FindActivity extends AppCompatActivity {
             TextView t2 = (TextView) findViewById(R.id.station2);
             TextView t3 = (TextView) findViewById(R.id.station3);
 
-            View l1 = (View) findViewById(R.id.line2_1);
-            View l2 = (View) findViewById(R.id.line2_2);
+            View l1 = (View) findViewById(R.id.line2);
             TextView s1 = (TextView) findViewById(R.id.spend_time1);
             TextView s2 = (TextView) findViewById(R.id.spend_time2);
 
@@ -209,7 +217,6 @@ public class FindActivity extends AppCompatActivity {
                 }
                 if (w == 0) {
                     l1.setVisibility(View.GONE);
-                    l2.setVisibility(View.GONE);
                     s2.setVisibility(View.GONE);
                     t3.setVisibility(View.GONE);
                     t1.setText(s.toString());
@@ -217,7 +224,6 @@ public class FindActivity extends AppCompatActivity {
                     s1.setText(fr1.getCost().toString());
                 } else {
                     l1.setVisibility(View.VISIBLE);
-                    l2.setVisibility(View.VISIBLE);
                     s2.setVisibility(View.VISIBLE);
                     t3.setVisibility(View.VISIBLE);
                     t1.setText(s.toString());

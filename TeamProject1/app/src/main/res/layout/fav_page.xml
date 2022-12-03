@@ -21,12 +21,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="최근 이용 내역"
+            android:text="즐겨찾기"
             android:textColor="#000000"
             android:textSize="20sp" />
 
         <Button
-            android:id="@+id/backBtn_rec"
+            android:id="@+id/backBtn_fav"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:background="@drawable/back_btn" />
@@ -34,6 +34,9 @@
     </androidx.appcompat.widget.Toolbar>
 
     <ListView
+        android:id="@+id/fav_list"
+        android:divider="@null"
+        android:dividerHeight="0dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

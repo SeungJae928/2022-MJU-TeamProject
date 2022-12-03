@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private final long finishTime= 1000;
     private long pressTime = 0;
 
-    private boolean btn_state = false;
+    private boolean btn_state = true;
 
     public static String userSid;
 
@@ -45,18 +45,18 @@ public class MainActivity extends AppCompatActivity {
         menuButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!btn_state){
+                if(btn_state){
+                    changeState();
                     menuButton2.setVisibility(View.VISIBLE);
                     menuButton3.setVisibility(View.VISIBLE);
                     menuButton4.setVisibility(View.VISIBLE);
                     menuButton5.setVisibility(View.VISIBLE);
-                    changeState();
                 } else {
+                    changeState();
                     menuButton2.setVisibility(View.INVISIBLE);
                     menuButton3.setVisibility(View.INVISIBLE);
                     menuButton4.setVisibility(View.INVISIBLE);
                     menuButton5.setVisibility(View.INVISIBLE);
-                    changeState();
                 }
             }
         });
@@ -65,7 +65,8 @@ public class MainActivity extends AppCompatActivity {
         menuButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(getApplicationContext(), FavoriteActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -82,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
         menuButton4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("hi");
                 Intent intent = new Intent(getApplicationContext(), FindActivity.class);
                 startActivity(intent);
             }
