@@ -72,23 +72,24 @@
                 android:id="@+id/searchView11"
                 android:layout_width="350dp"
                 android:layout_height="40dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginEnd="16dp"
                 android:background="@drawable/radius_whiteblue"
                 android:hint="출발역을 입력하세요."
-                android:paddingLeft="10dp"
+                android:paddingStart="10dp"
                 app:iconifiedByDefault="false"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <EditText
                 android:id="@+id/searchView12"
-                android:layout_width="315dp"
+                android:layout_width="316dp"
                 android:layout_height="40dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginEnd="50dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/radius_whiteblue"
                 android:hint="경유역을 입력하세요."
-                android:paddingLeft="10dp"
+                android:paddingStart="10dp"
                 android:visibility="invisible"
                 app:iconifiedByDefault="false"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -100,25 +101,25 @@
                 android:id="@+id/addButton"
                 android:layout_width="34dp"
                 android:layout_height="34dp"
-                android:layout_marginLeft="320dp"
+                android:layout_marginStart="320dp"
                 android:layout_marginTop="40dp"
-                android:layout_marginBottom="0dp"
                 android:background="@drawable/add_button"
                 android:visibility="visible"
                 app:layout_constraintBottom_toTopOf="@+id/searchView13"
                 app:layout_constraintStart_toStartOf="@+id/searchView11"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.5" />
+                app:layout_constraintVertical_bias="0.5"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <EditText
                 android:id="@+id/searchView13"
                 android:layout_width="350dp"
                 android:layout_height="40dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginBottom="27dp"
                 android:background="@drawable/radius_whiteblue"
-                android:hint="도착역을 입력하세요."
-                android:paddingLeft="10dp"
+                android:hint="@string/search_end"
+                android:paddingStart="10dp"
                 app:iconifiedByDefault="false"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -134,7 +135,7 @@
             android:id="@+id/clockView"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="@color/lightgray"
+            android:background="@color/whiteblue"
             android:gravity="start|center"
             android:paddingStart="15dp"
             android:paddingTop="5dp"
@@ -148,134 +149,180 @@
         <Button
             android:id="@+id/sort_button"
             android:layout_width="100dp"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
             android:layout_gravity="end"
+            android:layout_marginTop="5dp"
             android:onClick="mOnClick"
             android:text="@string/sort_button"
             android:textSize="13sp"
+            android:background="@color/lightgray"
             tools:ignore="TouchTargetSizeCheck" />
 
     </FrameLayout>
 
-    <LinearLayout
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/startTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:text="@string/spend_time"
-                android:textSize="27sp"
-                android:textStyle="bold"
-                android:typeface="normal" />
-
-            <View
-                android:layout_width="130dp"
-                android:layout_height="3dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="1dp"
-                android:background="@android:color/darker_gray" />
-
-            <TextView
-                android:id="@+id/information"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="5dp"
-                android:text="@string/information" />
-
-            <TextView
-                android:id="@+id/station1"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/elipse_whiteblue"
-                android:gravity="center"
-                android:text="@string/station1"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <View
-                android:id="@+id/line1_1"
-                android:layout_width="5dp"
-                android:layout_height="25dp"
-                android:layout_marginStart="38dp"
-                android:background="@android:color/darker_gray" />
-
-            <TextView
-                android:id="@+id/spend_time1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
-                android:text="@string/spend1" />
-
-            <View
-                android:id="@+id/line1_2"
-                android:layout_width="5dp"
-                android:layout_height="25dp"
-                android:layout_marginStart="38dp"
-                android:background="@android:color/darker_gray" />
-
-            <TextView
-                android:id="@+id/station2"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="0dp"
-                android:background="@drawable/elipse_whiteblue"
-                android:gravity="center"
-                android:text="@string/station2"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <View
-                android:id="@+id/line2_1"
-                android:layout_width="5dp"
-                android:layout_height="25dp"
-                android:layout_marginStart="38dp"
-                android:background="@android:color/darker_gray" />
-
-            <TextView
-                android:id="@+id/spend_time2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
-                android:text="@string/spend2" />
-
-            <View
-                android:id="@+id/line2_2"
-                android:layout_width="5dp"
-                android:layout_height="25dp"
-                android:layout_marginStart="38dp"
-                android:background="@android:color/darker_gray" />
-
-            <TextView
-                android:id="@+id/station3"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="0dp"
-                android:background="@drawable/elipse_whiteblue"
-                android:gravity="center"
-                android:text="@string/station3"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-        </LinearLayout>
         <TextView
+            android:id="@+id/startTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="@string/spend_time"
+            android:textColor="@color/black"
+            android:textSize="27sp"
+            android:textStyle="bold"
+            android:typeface="normal" />
+
+        <View
+            android:layout_width="130dp"
+            android:layout_height="2dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="40dp"
+            android:background="@color/black" />
+
+        <TextView
+            android:id="@+id/information"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="100dp"
-            android:text="testestest"/>
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="50dp"
+            android:text="@string/information"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/station1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="90dp"
+            android:background="@drawable/elipse_whiteblue"
+            android:gravity="center"
+            android:text="@string/station1"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/line1"
+            android:layout_width="4dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="38dp"
+            android:layout_marginTop="140dp"
+            android:background="@android:color/darker_gray" />
+
+        <View
+            android:id="@+id/bar1"
+            android:layout_width="15dp"
+            android:layout_height="2dp"
+            android:layout_marginStart="105dp"
+            android:layout_marginTop="163dp"
+            android:background="@color/black" />
+
+        <View
+            android:id="@+id/bar2"
+            android:layout_width="15dp"
+            android:layout_height="2dp"
+            android:layout_marginStart="105dp"
+            android:layout_marginTop="263dp"
+            android:background="@color/black" />
+
+        <TextView
+            android:id="@+id/spend_time1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="152dp"
+            android:text="@string/spend1"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+
+        <TextView
+            android:id="@+id/station2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="190dp"
+            android:background="@drawable/elipse_whiteblue"
+            android:gravity="center"
+            android:text="@string/station2"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/line2"
+            android:layout_width="4dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="38dp"
+            android:layout_marginTop="240dp"
+            android:background="@android:color/darker_gray" />
+
+        <TextView
+            android:id="@+id/spend_time2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="252dp"
+            android:text="@string/spend2"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+
+            />
+
+
+        <TextView
+            android:id="@+id/station3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="290dp"
+            android:background="@drawable/elipse_whiteblue"
+            android:gravity="center"
+            android:text="@string/station3"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/alarm_btn"
+            android:layout_width="100dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="280dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/radius_mainblue"
+            android:text="@string/alarm_start"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            tools:ignore="TextContrastCheck" />
+
+        <TextView
+            android:id="@+id/detail"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="130dp"
+            android:layout_marginTop="142dp"
+            android:text="@string/detail01"
+            android:textAlignment="center"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/detail2"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="130dp"
+            android:layout_marginTop="242dp"
+            android:text="@string/detail02"
+            android:textAlignment="center"
+            android:textSize="18sp" />
+
+    </FrameLayout>
 
 </LinearLayout>
 

@@ -3,7 +3,7 @@
     <string name="b_t_s_best_transfer_in_subway">B.T.S (Best transfer in Subway)</string>
     <string name="todo">TODO</string>
     <string name="search_history">최근 검색 기록</string>
-    <string name="text_time">OO월 OO일 OO시 OO분</string>
+    <string name="text_time">OO일 OO시 OO분 출발</string>
     <string name="best">최적 경로</string>
     <string name="fast">최단 시간</string>
     <string name="min_amount">최소 금액</string>
@@ -17,4 +17,8 @@
     <string name="spend1">OO분</string>
     <string name="spend2">OO분</string>
     <string name="data"></string>
+    <string name="detail01">001 002 003 004 005 006 007 008 009 010 011</string>
+    <string name="alarm_start">하차알림 시작</string>
+    <string name="detail02">001 002 003 004 005 006 007 008 009 010 011</string>
+    <string name="search_end">도착역을 입력하세요.</string>
 </resources>
