@@ -56,13 +56,12 @@ public class LoginActivity extends AppCompatActivity {
                         //ToDo 로그인 이후 화면 전환 및 현재 유저 정보(SID 정도만?) 저장
                         System.out.println("로그인 성공");
                         userSid = db.getUserDatabyId(uID).getSid();
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
                     } else {
                         Toast.makeText(getApplicationContext(), "잘못된 회원정보입니다.", Toast.LENGTH_LONG).show();
                     }
-
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
                 }
             }
         });
@@ -104,7 +103,11 @@ public class LoginActivity extends AppCompatActivity {
                 break;
             }
         }
-        
+
+        if(user.getPw() == null){
+            return false;
+        }
+
         if(user.getPw().equals(pw)){
             return true;
         } else {

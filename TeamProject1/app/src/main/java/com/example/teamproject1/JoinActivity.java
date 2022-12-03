@@ -18,14 +18,12 @@ public class JoinActivity extends AppCompatActivity {
     private UserDBHelper db;
     private List<User> userList;
     private boolean isChecked;
-    private String verificated_ID;
+    private String verificated_ID = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.join_page_layout);
-
-        System.out.println("hi");
 
         db = new UserDBHelper(JoinActivity.this);
         userList = db.getUserData();
