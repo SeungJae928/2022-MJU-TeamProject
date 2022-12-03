@@ -59,13 +59,12 @@ public class LoginActivity extends AppCompatActivity {
                             System.out.println(u);
                         }
                         userSid = db.getUserDatabyId(uID).getSid();
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
                     } else {
                         Toast.makeText(getApplicationContext(), "잘못된 회원정보입니다.", Toast.LENGTH_LONG).show();
                     }
-
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
                 }
             }
         });
@@ -107,7 +106,11 @@ public class LoginActivity extends AppCompatActivity {
                 break;
             }
         }
-        
+
+        if(user.getPw() == null){
+            return false;
+        }
+
         if(user.getPw().equals(pw)){
             return true;
         } else {

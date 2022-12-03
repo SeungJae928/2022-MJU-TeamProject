@@ -1,10 +1,18 @@
 package com.example.teamproject1;
 
+import android.app.AlertDialog;
+
 public class Favorites {
 
     public String sid;
     public String userSid;
     public String station;
+
+    public Favorites() {}
+
+    public Favorites(String station){
+        this.station = station;
+    }
 
     public String getSid() {
         return sid;

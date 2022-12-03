@@ -26,12 +26,12 @@ class UserDBHelper extends SQLiteOpenHelper {
 
     public static final String TABLE_NAME2= "Favorite";
     public static final String COL_1_2="ID";
-    public static final String COL_2_2="userID";
+    public static final String COL_2_2="userSID";
     public static final String COL_3_2="Station";
 
     public static final String TABLE_NAME3= "RecentlyUsed";
     public static final String COL_1_3="ID";
-    public static final String COL_2_3="userID";
+    public static final String COL_2_3="userSID";
     public static final String COL_3_3="Station";
 
     private SQLiteDatabase sDB;
@@ -124,7 +124,6 @@ class UserDBHelper extends SQLiteOpenHelper {
 
         User user = new User();
 
-
         user.setSid(res.getString(0));
         user.setId(res.getString(1));
         user.setPw(res.getString(2));
@@ -152,9 +151,14 @@ class UserDBHelper extends SQLiteOpenHelper {
         return true;
     }
     //테이블 삭제
-    public int deleteData(String id){
+    public int deleteUserData(String id){
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete(TABLE_NAME,"ID=?",new String[] {id});
+    }
+
+    public int deleteFavData(String station){
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(TABLE_NAME2,"Station=?",new String[] {station});
     }
 
 //    public boolean openDataBase() throws SQLException
@@ -216,12 +220,12 @@ class UserDBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public List getFavoriteData()
+    public List getFavoriteDatabyUserSid(String userSid)
     {
         sDB = this.getReadableDatabase();
         try
         {
-            String sql ="SELECT * FROM " + TABLE_NAME2;
+            String sql ="SELECT * FROM " + TABLE_NAME2 + " where userSID='"+userSid+"';";
 
             List favoriteList = new ArrayList();
 
@@ -245,6 +249,43 @@ class UserDBHelper extends SQLiteOpenHelper {
 
             }
             return favoriteList;
+        }
+        catch (SQLException mSQLException)
+        {
+            Log.e("11", "getTestData >>"+ mSQLException.toString());
+            throw mSQLException;
+        }
+    }
+
+    public List getRecentlyUsedData()
+    {
+        sDB = this.getReadableDatabase();
+        try
+        {
+            String sql ="SELECT * FROM " + TABLE_NAME3;
+
+            List recentList = new ArrayList();
+
+            Recent recent = null;
+
+            Cursor mCur = sDB.rawQuery(sql, null);
+            if (mCur!=null)
+            {
+                // 칼럼의 마지막까지
+                while( mCur.moveToNext() ) {
+
+                    recent = new Recent();
+
+                    recent.setSid(mCur.getString(0));
+                    recent.setUserSid(mCur.getString(1));
+                    recent.setRecently_used(mCur.getString(2));
+
+                    // 리스트에 넣기
+                    recentList.add(recent);
+                }
+
+            }
+            return recentList;
         }
         catch (SQLException mSQLException)
         {
