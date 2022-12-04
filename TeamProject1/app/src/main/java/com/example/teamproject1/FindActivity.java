@@ -1,5 +1,7 @@
 package com.example.teamproject1;
 
+import static com.example.teamproject1.MainActivity.userSid;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
@@ -31,6 +33,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -40,11 +43,16 @@ public class FindActivity extends AppCompatActivity {
     private Timer mTimer;
     private boolean way = false;
     Dijkstra d;
+    private UserDBHelper db;
+    private List<Recent> recentList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Button mButton, addButton, alarmButton;
         d = new Dijkstra(this);
+
+        db = new UserDBHelper(FindActivity.this);
+        recentList = db.getRecentlyUsedData(userSid);
 
         androidx.appcompat.widget.Toolbar toolbar;
         EditText waySearchView;
@@ -232,6 +240,18 @@ public class FindActivity extends AppCompatActivity {
                     s1.setText(fr1.getCost().toString());
                     s2.setText(fr2.getCost().toString());
                 }
+
+                //최근 이용 db에 역 이름 등록
+                try {
+                    for(Recent item : recentList){
+                        if(item.getStart().equals(s.toString()) && item.getEnd().equals(e.toString()))
+                            throw new reduplicationEx("중복 데이터 입력 방지");
+                    }
+                    db.insertDatatoRecentlyUsed(userSid, s.toString(), e.toString());
+                } catch (reduplicationEx e) {
+                    System.out.println(e.getMessage());
+                }
+
                 return false;
             }
         });
@@ -239,5 +259,13 @@ public class FindActivity extends AppCompatActivity {
         popup.show();
     }
 
+}
+
+class reduplicationEx extends Exception {
+    reduplicationEx(){}
+
+    reduplicationEx(String message){
+        super(message);
+    }
 }
 

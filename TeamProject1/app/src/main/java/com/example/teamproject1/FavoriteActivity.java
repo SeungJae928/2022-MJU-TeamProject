@@ -2,6 +2,8 @@ package com.example.teamproject1;
 
 import static android.content.ContentValues.TAG;
 
+import static com.example.teamproject1.InfoActivity.state;
+import static com.example.teamproject1.InfoActivity.station_name;
 import static com.example.teamproject1.MainActivity.userSid;
 
 import android.content.Context;
@@ -55,8 +57,6 @@ public class FavoriteActivity extends AppCompatActivity {
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
                 finish();
             }
         });
@@ -109,8 +109,12 @@ public class FavoriteActivity extends AppCompatActivity {
 
             CheckBox fav_checkbox = convertView.findViewById(R.id.fav_checkbox);
 
+            for(Favorites item : fav_list){
+                if(item.getStation().equals(stItem.getStation())){
+                    fav_checkbox.setChecked(true);
+                }
+            }
 
-            fav_checkbox.setChecked(true);
             fav_checkbox.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -126,7 +130,11 @@ public class FavoriteActivity extends AppCompatActivity {
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(getApplicationContext(), InfoActivity.class);
+                    startActivity(intent);
+                    station_name = stItem.getStation();
+                    state = true;
+                    finish();
                 }
             });
 

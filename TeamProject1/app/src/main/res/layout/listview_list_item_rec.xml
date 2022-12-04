@@ -23,14 +23,31 @@
             android:background="@drawable/fav_item">
 
             <TextView
-                android:id="@+id/st_name_fav"
-                android:layout_width="0dp"
-                android:layout_height="30dp"
+                android:id="@+id/st_name_rce_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:layout_weight="100"
                 android:layout_marginTop="15dp"
                 android:gravity="center_vertical"
-                android:text="~~~역 -> ~~~역"
+                android:text="~~~역"
+                android:textSize="25sp" />
+
+            <View
+                android:layout_width="35dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="21dp"
+                android:background="@drawable/arrow_icon"
+                android:gravity="center_vertical" />
+
+            <TextView
+                android:id="@+id/st_name_rce_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center_vertical"
+                android:text="~~~역"
                 android:textSize="25sp"/>
 
 

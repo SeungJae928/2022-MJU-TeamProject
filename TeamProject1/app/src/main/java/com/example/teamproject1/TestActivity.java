@@ -16,6 +16,22 @@ public class TestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.info_page);
 
+        db = new UserDBHelper(TestActivity.this);
+//        db.insertDatatoRecentlyUsed("test", "1", "1");
+//        db.insertDatatoRecentlyUsed("test", "2", "1");
+//        db.insertDatatoRecentlyUsed("test", "3", "1");
+//        db.insertDatatoRecentlyUsed("test", "4", "1");
+//        db.insertDatatoRecentlyUsed("test", "5", "1");
+//        db.insertDatatoRecentlyUsed("test", "6", "1");
+//        db.insertDatatoRecentlyUsed("test", "7", "1");
+//        db.insertDatatoRecentlyUsed("test", "8", "1");
+//        db.insertDatatoRecentlyUsed("test", "9", "1");
+//        db.insertDatatoRecentlyUsed("test", "10", "1");
+//        db.insertDatatoRecentlyUsed("test", "11", "1");
+//        db.insertDatatoRecentlyUsed("test", "12", "1");
+//        db.insertDatatoRecentlyUsed("test", "13", "1");
+
+
 //        db = new UserDBHelper(TestActivity.this);
 //
 //        fav_checkbox = findViewById(R.id.fav_checkbox);

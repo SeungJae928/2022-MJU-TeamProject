@@ -31,8 +31,9 @@
         <activity android:name=".RecentlyUsedActivity"/>
         <activity android:name=".FindActivity"/>
         <activity android:name=".SearchActivity"/>
-        <activity android:name=".FavoriteActivity"/>
         <activity android:name=".InfoActivity"/>
+        <activity android:name=".FavoriteActivity"/>
+
     </application>
 
 </manifest>
