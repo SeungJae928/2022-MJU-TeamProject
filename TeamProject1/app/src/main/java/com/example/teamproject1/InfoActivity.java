@@ -2,6 +2,7 @@ package com.example.teamproject1;
 
 import static com.example.teamproject1.MainActivity.userSid;
 
+import android.content.Intent;
 import android.icu.text.IDNA;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +22,7 @@ public class InfoActivity extends AppCompatActivity {
     private CheckBox fav_checkBox;
     private UserDBHelper db;
     private List<Favorites> fav_list;
+    public static boolean state;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +59,11 @@ public class InfoActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        if(state){
+            Intent intent = new Intent(getApplicationContext(), FavoriteActivity.class);
+            startActivity(intent);
+            state = false;
+        }
         finish();
     }
 

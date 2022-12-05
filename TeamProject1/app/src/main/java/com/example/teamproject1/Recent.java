@@ -4,7 +4,8 @@ public class Recent {
 
     public String sid;
     public String userSid;
-    public String recently_used;
+    public String start;
+    public String end;
 
     public String getSid() {
         return sid;
@@ -22,11 +23,19 @@ public class Recent {
         this.userSid = userSid;
     }
 
-    public String getRecently_used() {
-        return recently_used;
+    public String getStart() {
+        return start;
     }
 
-    public void setRecently_used(String recently_used) {
-        this.recently_used = recently_used;
+    public void setStart(String start) {
+        this.start = start;
+    }
+
+    public String getEnd() {
+        return end;
+    }
+
+    public void setEnd(String end) {
+        this.end = end;
     }
 }

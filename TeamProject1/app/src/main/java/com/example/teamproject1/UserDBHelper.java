@@ -15,8 +15,6 @@ import java.util.List;
 
 class UserDBHelper extends SQLiteOpenHelper {
 
-    private static String DB_PATH = "";
-
     public static final String DATABASE_NAME = "BTS_DB";
     public static final String TABLE_NAME= "User";
     public static final String COL_1="ID";
@@ -32,7 +30,8 @@ class UserDBHelper extends SQLiteOpenHelper {
     public static final String TABLE_NAME3= "RecentlyUsed";
     public static final String COL_1_3="ID";
     public static final String COL_2_3="userSID";
-    public static final String COL_3_3="Station";
+    public static final String COL_3_3="Start";
+    public static final String COL_4_3="End_";
 
     private SQLiteDatabase sDB;
 
@@ -56,7 +55,8 @@ class UserDBHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE " + TABLE_NAME3
                 + " (" + COL_1_3 + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COL_2_3 + " TEXT, "
-                + COL_3_3 + " TEXT); ");
+                + COL_3_3 + " TEXT, "
+                + COL_4_3 + " TEXT); ");
     }
 
     //버전 업그레이드
@@ -100,13 +100,24 @@ class UserDBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public boolean insertDatatoRecentlyUsed(String userID, String station){
+    public boolean insertDatatoRecentlyUsed(String userID, String start, String end){
         SQLiteDatabase db= this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
+        List<Recent> list = getRecentlyUsedData(userID);
+
         contentValues.put(COL_2_3,userID);
-        contentValues.put(COL_3_3,station);
+        contentValues.put(COL_3_3,start);
+        contentValues.put(COL_4_3,end);
 
         long result = db.insert(TABLE_NAME3,null,contentValues);
+
+        if(list != null && list.size() > 9){
+            for(int i = 0; list.size() != 9;){
+                Recent tmp = list.get(i);
+                deleteRecData(tmp.getSid());
+                list.remove(i);
+            }
+        }
 
         if(result == -1){
             return false;
@@ -160,6 +171,15 @@ class UserDBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete(TABLE_NAME2,"Station=?",new String[] {station});
     }
+
+    public int deleteRecData(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(TABLE_NAME3,"ID=?",new String[] {id});
+    }
+
+//    public int deleteRecentData(String station) {
+//
+//    }
 
 //    public boolean openDataBase() throws SQLException
 //    {
@@ -257,12 +277,12 @@ class UserDBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public List getRecentlyUsedData()
+    public List getRecentlyUsedData(String userSid)
     {
         sDB = this.getReadableDatabase();
         try
         {
-            String sql ="SELECT * FROM " + TABLE_NAME3;
+            String sql ="SELECT * FROM " + TABLE_NAME3 + " where userSID='"+userSid+"';";
 
             List recentList = new ArrayList();
 
@@ -278,7 +298,8 @@ class UserDBHelper extends SQLiteOpenHelper {
 
                     recent.setSid(mCur.getString(0));
                     recent.setUserSid(mCur.getString(1));
-                    recent.setRecently_used(mCur.getString(2));
+                    recent.setStart(mCur.getString(2));
+                    recent.setEnd(mCur.getString(3));
 
                     // 리스트에 넣기
                     recentList.add(recent);
