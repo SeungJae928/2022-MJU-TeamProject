@@ -16,6 +16,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Locale;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Scanner;
@@ -43,8 +45,8 @@ class FindRoute{
 public class Dijkstra {
     static int V, E;
     //static int start, end;
-    static ArrayList<ArrayList<Node>> graph;
-    static Map<Integer, Integer> stations;
+    static ArrayList<ArrayList<Node>> graph = null;
+    static Map<Integer, Integer> stations = null;
 
     private static final String T = "time";
     private static final String D = "dis";
@@ -53,8 +55,8 @@ public class Dijkstra {
     Context context;
 
     static class Node {// 자신의 이름과 다음 노드의 인덱스, 그 노드로 가는데 필요한 비용을 담고 있다.
-        int idx, name;
-        HashMap<String, Integer> data;
+        public int idx, name;
+        public HashMap<String, Integer> data;
 
         Node(int idx, int name) {
             this.idx = idx;
@@ -77,7 +79,63 @@ public class Dijkstra {
         context = c;
     }
 
-    public FindRoute dijkstra(int start, int end, int tp) throws IOException {
+    public String[] getDetails(ArrayList<Integer> route) {
+        int cost;
+        int walk;
+        int time;
+
+        String[] res = new String[3];
+
+        walk = (int)(route.size() * 0.8);
+        cost = getTotal(route, C);
+        time = getTotal(route, T);
+
+        res[0] = time/3600 + "시간 " + (time % 3600) / 60 + "분";
+        res[1] = "도보 " + walk + "분";
+        res[2] = cost + "원";
+
+        return res;
+    }
+
+    public String[] getDetails(ArrayList<Integer> route, ArrayList<Integer> route2) {
+        int cost;
+        int walk;
+        int time;
+
+        String[] res = new String[3];
+
+        walk = (int)(route.size() * 0.8) + (int)(route2.size() * 0.8);
+        cost = getTotal(route, C) + getTotal(route2, C);
+        time = getTotal(route, T) + getTotal(route2, T);
+
+        res[0] = time/3600 + "시간 " + (time % 3600) / 60 + "분";
+        res[1] = "도보 " + walk + "분";
+        res[2] = cost + "원";
+
+        return res;
+    }
+
+    public int getTotal(ArrayList<Integer> route, String type) {
+        HashMap<String, Integer> data;
+        ArrayList<Node> temp;
+        int sum = 0;
+        Node next = null;
+        for (int i = 0; i < route.size() - 1; i++) {
+            temp = graph.get(stations.get(route.get(i)));
+            Iterator<Node> it = temp.iterator();
+            while (it.hasNext()){
+                next = it.next();
+                if (next.name == route.get(i+1)) {
+                    break;
+                }
+            }
+            data = next.data;
+            sum += data.get(type);
+        }
+        return sum;
+    }
+
+    public FindRoute dijkstra(int start, int end, int tp) throws Exception {
         // 초기화
 
         // KeyBoard 입력
@@ -145,6 +203,13 @@ public class Dijkstra {
         }
         V = stations.size();
         E = ln;
+
+        if (stations.get(start) == null) {
+            throw new Exception("출발지가 존재하지 않습니다.");
+        }
+        if (stations.get(end) == null) {
+            throw new Exception("목적지가 존재하지 않습니다.");
+        }
 
 //        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 //        StringTokenizer st = new StringTokenizer(br.readLine());
@@ -228,7 +293,7 @@ public class Dijkstra {
 
         // 결과 출력
         //System.out.println(Arrays.toString(dist));
-        System.out.println(start + " -> " + end + ": " + dist[stations.get(end)]);
+        //System.out.println(start + " -> " + end + ": " + dist[stations.get(end)]);
         Vector<Integer> routes = new Vector<>();
         int ior = 0;
         routes.add(end);
@@ -238,11 +303,11 @@ public class Dijkstra {
         //System.out.println(routes.size());
         ArrayList<Integer> res = new ArrayList<>();
         for (int i = routes.size() - 1; i >= 0; i--){
-            System.out.print(routes.get(i));
+            //System.out.print(routes.get(i));
             res.add(routes.get(i));
-            if (i != 0) {
-                System.out.print(" -> ");
-            }
+//            if (i != 0) {
+//                System.out.print(" -> ");
+//            }
         }
 
         return new FindRoute(dist[stations.get(end)], res);
