@@ -17,6 +17,7 @@ public class TestActivity extends AppCompatActivity {
         setContentView(R.layout.info_page);
 
         db = new UserDBHelper(TestActivity.this);
+
 //        db.insertDatatoRecentlyUsed("test", "1", "1");
 //        db.insertDatatoRecentlyUsed("test", "2", "1");
 //        db.insertDatatoRecentlyUsed("test", "3", "1");

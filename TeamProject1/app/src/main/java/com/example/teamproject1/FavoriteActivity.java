@@ -4,10 +4,12 @@ import static android.content.ContentValues.TAG;
 
 import static com.example.teamproject1.InfoActivity.state;
 import static com.example.teamproject1.InfoActivity.station_name;
+import static com.example.teamproject1.MainActivity.getStList;
 import static com.example.teamproject1.MainActivity.userSid;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -33,6 +35,7 @@ public class FavoriteActivity extends AppCompatActivity {
     private ListView listView;
     private ListViewAdapter listViewAdapter;
     private List<Favorites> fav_list;
+    private List<StationInfo> stList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,7 @@ public class FavoriteActivity extends AppCompatActivity {
 
         db = new UserDBHelper(FavoriteActivity.this);
         fav_list = db.getFavoriteDatabyUserSid(userSid);
+        stList = getStList();
 
         listView = findViewById(R.id.fav_list);
         listViewAdapter = new ListViewAdapter();
@@ -103,7 +107,44 @@ public class FavoriteActivity extends AppCompatActivity {
             }
 
             TextView st_name_fav = (TextView) convertView.findViewById(R.id.st_name_fav);
+            TextView st_conge = (TextView) convertView.findViewById(R.id.st_conge);
+            TextView isStore = (TextView) convertView.findViewById(R.id.isStore);
+            TextView isToilet = (TextView) convertView.findViewById(R.id.isToilet);
+            TextView isVending = (TextView) convertView.findViewById(R.id.isVending);
 
+            for(StationInfo item : stList){
+                if(item.getSt_name().equals(stItem.getStation())){
+                    switch (item.getCongestion()){
+                        case 0 :
+                            st_conge.setText("여유");
+                            st_conge.setTextColor(Color.GREEN);
+                            break;
+                        case 1 :
+                            st_conge.setText("보통");
+                            st_conge.setTextColor(Color.YELLOW);
+                            break;
+                        case 2 :
+                            st_conge.setText("혼잡");
+                            st_conge.setTextColor(Color.RED);
+                            break;
+                    }
+                    if(item.isStore()){
+                        isStore.setText("있음");
+                    } else {
+                        isStore.setText("없음");
+                    }
+                    if(item.isToilet()){
+                        isToilet.setText("있음");
+                    } else {
+                        isToilet.setText("없음");
+                    }
+                    if(item.isVending()){
+                        isVending.setText("있음");
+                    } else {
+                        isVending.setText("없음");
+                    }
+                }
+            }
             st_name_fav.setText(stItem.getStation());
             Log.d(TAG, "getView() - [ "+position+" ] "+stItem.getStation());
 

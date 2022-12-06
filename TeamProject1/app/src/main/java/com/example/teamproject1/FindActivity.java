@@ -57,6 +57,7 @@ public class FindActivity extends AppCompatActivity {
     private int timeSecond = -1;
     private UserDBHelper db;
     private List<Recent> recentList;
+    private int tp;
     private Thread thread = null;
 
     @Override
@@ -270,6 +271,7 @@ public class FindActivity extends AppCompatActivity {
                                 fr1 = d.dijkstra(s.intValue(), w.intValue(), 1);
                                 fr2 = d.dijkstra(w.intValue(), e.intValue(), 1);
                             }
+                            tp = 1;
                             break;
                         case R.id.fast:
                             if (w == 0) {
@@ -278,6 +280,7 @@ public class FindActivity extends AppCompatActivity {
                                 fr1 = d.dijkstra(s.intValue(), w.intValue(), 0);
                                 fr2 = d.dijkstra(w.intValue(), e.intValue(), 0);
                             }
+                            tp = 0;
                             break;
                         case R.id.min_amount:
                             if (w == 0) {
@@ -286,6 +289,7 @@ public class FindActivity extends AppCompatActivity {
                                 fr1 = d.dijkstra(s.intValue(), w.intValue(), 2);
                                 fr2 = d.dijkstra(w.intValue(), e.intValue(), 2);
                             }
+                            tp = 2;
                             break;
                         case R.id.minimum:
                             //
@@ -378,7 +382,7 @@ public class FindActivity extends AppCompatActivity {
                         if(item.getStart().equals(s.toString()) && item.getEnd().equals(e.toString()))
                             throw new reduplicationEx("중복 데이터 입력 방지");
                     }
-                    db.insertDatatoRecentlyUsed(userSid, s.toString(), e.toString());
+                    db.insertDatatoRecentlyUsed(userSid, s.toString(), e.toString(), tp);
                 } catch (reduplicationEx e) {
                     System.out.println(e.getMessage());
                 }
