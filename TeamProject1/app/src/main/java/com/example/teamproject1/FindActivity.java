@@ -7,11 +7,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
-import android.annotation.SuppressLint;
-import android.graphics.drawable.Drawable;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.renderscript.RenderScript;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -38,16 +49,19 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class FindActivity extends AppCompatActivity {
-    TextView mtextView;
+    private TextView mtextView;
     private TextView timeTv;
     private Timer mTimer;
     private boolean way = false;
-    Dijkstra d;
+    private Dijkstra d;
+    private int timeSecond = -1;
     private UserDBHelper db;
     private List<Recent> recentList;
+    private Thread thread = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         Button mButton, addButton, alarmButton;
         d = new Dijkstra(this);
 
@@ -82,15 +96,61 @@ public class FindActivity extends AppCompatActivity {
         });
 
         timeTv = (TextView) findViewById(R.id.clockView);
-        MainTimerTask timerTask = new MainTimerTask();
-        mTimer = new Timer();
-        mTimer.schedule(timerTask, 500, 1000);
 
+        mTimer = new Timer();
         alarmButton = findViewById(R.id.alarm_btn);
         alarmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "하차 알림을 시작합니다.", Toast.LENGTH_LONG).show();
+
+                if (thread != null){
+                    if (thread.isAlive()){
+                        Toast.makeText(getApplicationContext(), "하차 알림이 실행중입니다.", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                }
+
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(FindActivity.this, "default");
+
+                builder.setSmallIcon(R.drawable.i_icon);
+                builder.setContentTitle("목적지 도착 알림");
+                builder.setContentText("목적지로 가는 중입니다.");
+
+                builder.setColor(Color.RED);
+                builder.setAutoCancel(false);
+                PendingIntent intent =
+                        PendingIntent.getActivity(FindActivity.this, 0, new Intent(getApplicationContext(), LoginActivity.class), PendingIntent.FLAG_ONE_SHOT);
+                builder.setContentIntent(intent);
+
+                NotificationManager notificationManager = (NotificationManager) FindActivity.this.getSystemService(Context.NOTIFICATION_SERVICE);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    notificationManager.createNotificationChannel(new NotificationChannel("default", "기본 채널", NotificationManager.IMPORTANCE_UNSPECIFIED));
+                }
+                notificationManager.notify(1, builder.build());
+                Toast.makeText(getApplicationContext(), "하차 알림을 실행합니다.", Toast.LENGTH_LONG).show();
+
+                thread = new Thread() {
+                    int t = 0;
+                    @Override
+                    public void run() {
+                        while (t <= timeSecond) {
+                            System.out.println(t + " " + timeSecond);
+                            builder.setProgress(timeSecond, t, false);
+                            notificationManager.notify(1, builder.build());
+                            try {
+                                sleep(1000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            t++;
+                        }
+                        builder.setContentText("목적지에 도착하였습니다.");
+                        builder.setAutoCancel(true);
+                        notificationManager.notify(1, builder.build());
+                    }
+                };
+
+                thread.start();
             }
         });
 
@@ -140,8 +200,15 @@ public class FindActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         MainTimerTask timerTask = new MainTimerTask();
+        mTimer = new Timer();
         mTimer.schedule(timerTask, 500, 3000);
         super.onResume();
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        finish();
     }
 
     // 버튼이 눌렸을 때
@@ -170,6 +237,11 @@ public class FindActivity extends AppCompatActivity {
             View l1 = (View) findViewById(R.id.line2);
             TextView s1 = (TextView) findViewById(R.id.spend_time1);
             TextView s2 = (TextView) findViewById(R.id.spend_time2);
+
+            View b1 = (View) findViewById(R.id.bar1);
+            View b2 = (View) findViewById(R.id.bar2);
+            TextView d1 = (TextView) findViewById(R.id.detail);
+            TextView d2 = (TextView) findViewById(R.id.detail2);
 
             Integer s = 0;
             Integer w = 0;
@@ -222,24 +294,83 @@ public class FindActivity extends AppCompatActivity {
 
                 } catch (IOException e) {
                     System.out.println(e);
+                    return false;
+                } catch (Exception e) {
+                    System.out.println(e);
+                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                    return false;
                 }
+
+                String cost1 = "";
+                String cost2 = "";
+
+                switch (menuItem.getItemId()) {
+                    case R.id.best:
+                        if (w == 0) {
+                            cost1 = fr1.getCost() + "미터";
+                        } else {
+                            cost1 = fr1.getCost() + "미터";
+                            cost2 = fr2.getCost() + "미터";
+                        }
+                        break;
+                    case R.id.fast:
+                        if (w == 0) {
+                            cost1 = fr1.getCost() + "초";
+                        } else {
+                            cost1 = fr1.getCost() + "초";
+                            cost2 = fr2.getCost() + "초";
+                        }
+                        break;
+                    case R.id.min_amount:
+                        if (w == 0) {
+                            cost1 = fr1.getCost() + "원";
+                        } else {
+                            cost1 = fr1.getCost() + "원";
+                            cost2 = fr2.getCost() + "원";
+                        }
+                        break;
+                    case R.id.minimum:
+                        //
+                        break;
+                }
+
+                String[] details = new String[0];
+
                 if (w == 0) {
                     l1.setVisibility(View.GONE);
                     s2.setVisibility(View.GONE);
                     t3.setVisibility(View.GONE);
+                    b2.setVisibility(View.GONE);
+                    d2.setVisibility(View.GONE);
                     t1.setText(s.toString());
                     t2.setText(e.toString());
-                    s1.setText(fr1.getCost().toString());
+                    s1.setText(cost1);
+                    d1.setText(fr1.getRoute().toString());
+                    details = d.getDetails(fr1.getRoute());
+                    timeSecond = d.getTotal(fr1.getRoute(), "time");
                 } else {
                     l1.setVisibility(View.VISIBLE);
                     s2.setVisibility(View.VISIBLE);
                     t3.setVisibility(View.VISIBLE);
+                    b2.setVisibility(View.VISIBLE);
+                    d2.setVisibility(View.VISIBLE);
                     t1.setText(s.toString());
                     t2.setText(w.toString());
                     t3.setText(e.toString());
-                    s1.setText(fr1.getCost().toString());
-                    s2.setText(fr2.getCost().toString());
+                    s1.setText(cost1);
+                    s2.setText(cost2);
+                    d1.setText(fr1.getRoute().toString());
+                    d2.setText(fr2.getRoute().toString());
+                    details = d.getDetails(fr1.getRoute(), fr2.getRoute());
+                    timeSecond = d.getTotal(fr1.getRoute(), "time")
+                            + d.getTotal(fr2.getRoute(), "time");
                 }
+
+                TextView st = (TextView) findViewById(R.id.startTime);
+                TextView info = (TextView) findViewById(R.id.information);
+
+                st.setText(details[0]);
+                info.setText(details[1] + ", " + details[2]);
 
                 //최근 이용 db에 역 이름 등록
                 try {
