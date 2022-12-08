@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="415dp"
+        android:layout_height="68dp"
+        android:background="#3F9CF1"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="0dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="테마 색상 변경"
+            android:textColor="#000000"
+            android:textSize="20sp"></TextView>
+    </androidx.appcompat.widget.Toolbar>
+
+    <ImageButton
+        android:id="@+id/backBtn_col"
+        android:layout_width="38dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:includeFontPadding="false"
+        android:background="#00000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back_btn"
+
+        />
+
+    <Button
+        android:id="@+id/blue_btn"
+        android:layout_width="85dp"
+        android:layout_height="87dp"
+        android:layout_marginStart="163dp"
+        android:layout_marginTop="274dp"
+        android:layout_marginEnd="163dp"
+        android:layout_marginBottom="370dp"
+        android:backgroundTint="#3F9CF1"
+        android:text="Blue"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/pink_button"
+        android:layout_width="85dp"
+        android:layout_height="87dp"
+        android:layout_marginStart="163dp"
+        android:layout_marginTop="386dp"
+        android:layout_marginEnd="163dp"
+        android:layout_marginBottom="258dp"
+        android:backgroundTint="#F13FCA"
+        android:text="Pink"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/green_button"
+        android:layout_width="85dp"
+        android:layout_height="87dp"
+        android:layout_marginStart="163dp"
+        android:layout_marginTop="510dp"
+        android:layout_marginEnd="163dp"
+        android:layout_marginBottom="134dp"
+        android:backgroundTint="#64AE70"
+        android:text="Green"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="81dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="170dp"
+        android:layout_marginEnd="166dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/color_set" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

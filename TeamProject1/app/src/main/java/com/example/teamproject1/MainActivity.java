@@ -112,7 +112,8 @@ public class MainActivity extends AppCompatActivity {
         menuButton5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Todo 테마색 바꾸기 구현
+                Intent intent = new Intent(getApplicationContext(), ColorsetActivity.class);
+                startActivity(intent);
             }
         });
 
