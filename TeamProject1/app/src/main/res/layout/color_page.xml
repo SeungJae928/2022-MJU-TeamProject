@@ -10,7 +10,7 @@
         android:id="@+id/toolbar"
         android:layout_width="415dp"
         android:layout_height="68dp"
-        android:background="#3F9CF1"
+        android:background="@color/blue_3F9CF1"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="0dp">
@@ -55,7 +55,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/pink_button"
+        android:id="@+id/pink_btn"
         android:layout_width="85dp"
         android:layout_height="87dp"
         android:layout_marginStart="163dp"
@@ -71,7 +71,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/green_button"
+        android:id="@+id/green_btn"
         android:layout_width="85dp"
         android:layout_height="87dp"
         android:layout_marginStart="163dp"
@@ -91,7 +91,7 @@
         android:layout_width="81dp"
         android:layout_height="72dp"
         android:layout_marginStart="164dp"
-        android:layout_marginTop="170dp"
+        android:layout_marginTop="150dp"
         android:layout_marginEnd="166dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
