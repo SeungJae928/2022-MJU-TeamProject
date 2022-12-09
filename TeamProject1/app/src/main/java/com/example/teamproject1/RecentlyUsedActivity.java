@@ -1,14 +1,11 @@
 package com.example.teamproject1;
 
-import static android.content.ContentValues.TAG;
-
 import static com.example.teamproject1.MainActivity.userSid;
 
 import android.content.Context;
 import android.os.Build;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

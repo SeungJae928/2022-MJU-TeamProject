@@ -4,13 +4,8 @@ import static com.example.teamproject1.InfoActivity.station_name;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
-import android.os.Build;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.VectorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
