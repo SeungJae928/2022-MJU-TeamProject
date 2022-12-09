@@ -35,6 +35,7 @@
         <activity android:name=".InfoActivity" />
         <activity android:name=".FavoriteActivity" />
         <activity android:name=".ColorsetActivity" />
+        <activity android:name=".RouteActivity" />
         <service
             android:name=".FindActivity"
             android:stopWithTask="true" />

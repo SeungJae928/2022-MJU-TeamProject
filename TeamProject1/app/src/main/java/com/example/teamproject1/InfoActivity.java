@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -41,6 +42,7 @@ public class InfoActivity extends AppCompatActivity {
     private long time = System.currentTimeMillis();
     private long remain = 1200000 - time%1200000;
     private String type;
+    private Button route_btn;
 
     public static boolean state;
     public static String station_name = "";
@@ -151,6 +153,16 @@ public class InfoActivity extends AppCompatActivity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
+        route_btn = findViewById(R.id.route_btn);
+        route_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), RouteActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     @Override
