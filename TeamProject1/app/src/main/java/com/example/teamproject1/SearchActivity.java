@@ -95,7 +95,7 @@ public class SearchActivity extends AppCompatActivity {
         msearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                System.out.println("hi");
+                System.out.println(query);
                 return false;
             }
 
