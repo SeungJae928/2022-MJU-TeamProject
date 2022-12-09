@@ -56,9 +56,6 @@ public class LoginActivity extends AppCompatActivity {
                     if (SignIn(uID, uPW)) {
                         //ToDo 로그인 이후 화면 전환 및 현재 유저 정보(SID 정도만?) 저장
                         System.out.println("로그인 성공");
-                        for (User u : userList){
-                            System.out.println(u);
-                        }
                         userSid = db.getUserDatabyId(uID).getSid();
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

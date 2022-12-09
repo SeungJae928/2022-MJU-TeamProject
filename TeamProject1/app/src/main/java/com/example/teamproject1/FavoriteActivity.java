@@ -121,7 +121,7 @@ public class FavoriteActivity extends AppCompatActivity {
                             break;
                         case 1 :
                             st_conge.setText("보통");
-                            st_conge.setTextColor(Color.YELLOW);
+                            st_conge.setTextColor(Color.BLUE);
                             break;
                         case 2 :
                             st_conge.setText("혼잡");

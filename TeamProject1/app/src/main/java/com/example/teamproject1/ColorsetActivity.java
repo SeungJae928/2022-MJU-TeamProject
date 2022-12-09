@@ -1,16 +1,17 @@
 package com.example.teamproject1;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.NumberPicker;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +28,7 @@ public class ColorsetActivity extends AppCompatActivity {
     private Button pink;
     private Button green;
     private UserDBHelper db;
+    private GradientDrawable drawableAddButton;
 
     private GradientDrawable drawableButOval;
     private GradientDrawable drawableElipseWhiteblue;
@@ -39,7 +41,7 @@ public class ColorsetActivity extends AppCompatActivity {
     private View mainNav;
 
     private String type = "blue";
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +51,8 @@ public class ColorsetActivity extends AppCompatActivity {
         blue = findViewById(R.id.blue_btn);
         pink = findViewById(R.id.pink_btn);
         green = findViewById(R.id.green_btn);
+        drawableAddButton = (GradientDrawable) getResources().getDrawable(R.drawable.add_button);
+
 
         drawableButOval = (GradientDrawable) getResources().getDrawable(R.drawable.but_oval);
         drawableElipseWhiteblue = (GradientDrawable) getResources().getDrawable(R.drawable.elipse_whiteblue);
