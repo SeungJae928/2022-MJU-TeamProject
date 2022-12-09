@@ -1,5 +1,6 @@
 package com.example.teamproject1;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,8 +23,8 @@ public class ColorsetActivity extends AppCompatActivity {
 
         back = findViewById(R.id.backBtn_col);
         blue = findViewById(R.id.blue_btn);
-        pink = findViewById(R.id.pink_button);
-        green = findViewById(R.id.green_button);
+        pink = findViewById(R.id.pink_btn);
+        green = findViewById(R.id.green_btn);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
