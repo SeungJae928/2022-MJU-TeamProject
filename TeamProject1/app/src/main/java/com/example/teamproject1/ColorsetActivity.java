@@ -41,6 +41,7 @@ public class ColorsetActivity extends AppCompatActivity {
     private GradientDrawable drawableRadiusMainblue;
     private GradientDrawable drawableRadiusSearchLayout;
     private GradientDrawable drawableRadiusWhiteblue;
+    private GradientDrawable drawableFavItem;
 
     private View mainNav;
 
@@ -67,6 +68,7 @@ public class ColorsetActivity extends AppCompatActivity {
         drawableRadiusMainblue = (GradientDrawable) getResources().getDrawable(R.drawable.radius_mainblue);
         drawableRadiusSearchLayout = (GradientDrawable) getResources().getDrawable(R.drawable.radius_search_layout);
         drawableRadiusWhiteblue = (GradientDrawable) getResources().getDrawable(R.drawable.radius_whiteblue);
+        drawableFavItem = (GradientDrawable) getResources().getDrawable(R.drawable.fav_item);
 
         if(type.equals("blue")){
             setBlue();
@@ -152,6 +154,9 @@ public class ColorsetActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             drawableRadiusWhiteblue.setColor(getColor(R.color.blue_E1E9F6));
         }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            drawableFavItem.setColor(getColor(R.color.blue_E1E9F6));
+        }
     }
 
     public void setPink() {
@@ -177,6 +182,9 @@ public class ColorsetActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             drawableRadiusWhiteblue.setColor(getColor(R.color.pink_F6E1F1));
         }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            drawableFavItem.setColor(getColor(R.color.pink_F6E1F1));
+        }
     }
 
     public void setGreen() {
@@ -201,6 +209,9 @@ public class ColorsetActivity extends AppCompatActivity {
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             drawableRadiusWhiteblue.setColor(getColor(R.color.green_E1F6E2));
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            drawableFavItem.setColor(getColor(R.color.green_E1F6E2));
         }
     }
 }
