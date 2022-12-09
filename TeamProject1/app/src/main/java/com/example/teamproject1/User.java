@@ -1,8 +1,5 @@
 package com.example.teamproject1;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class User {
 
     private String sid;

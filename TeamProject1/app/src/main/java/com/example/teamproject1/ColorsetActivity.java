@@ -2,30 +2,16 @@ package com.example.teamproject1;
 
 import static com.example.teamproject1.MainActivity.userSid;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import android.widget.NumberPicker;
-import android.widget.LinearLayout;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintSet;
-import androidx.appcompat.widget.Toolbar;
-import android.widget.NumberPicker;
 
 public class ColorsetActivity extends AppCompatActivity {
 

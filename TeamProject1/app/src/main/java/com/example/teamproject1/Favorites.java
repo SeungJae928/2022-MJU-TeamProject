@@ -1,7 +1,5 @@
 package com.example.teamproject1;
 
-import android.app.AlertDialog;
-
 public class Favorites {
 
     private String sid;
