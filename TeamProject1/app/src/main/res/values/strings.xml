@@ -9,9 +9,9 @@
     <string name="fast">최단 시간</string>
     <string name="min_amount">최소 금액</string>
     <string name="minimum">최소 환승</string>
-    <string name="spend_time">1시간 32분</string>
+    <string name="spend_time">0시간 00분</string>
     <string name="sort_button">정렬 버튼</string>
-    <string name="information">도보 7분, 1,650원</string>
+    <string name="information">도보 0분, 0원</string>
     <string name="station1">1</string>
     <string name="station2">2</string>
     <string name="station3">3</string>

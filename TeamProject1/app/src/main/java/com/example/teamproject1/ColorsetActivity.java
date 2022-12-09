@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,10 +19,12 @@ import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.widget.NumberPicker;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintSet;
-
+import androidx.appcompat.widget.Toolbar;
+import android.widget.NumberPicker;
 
 public class ColorsetActivity extends AppCompatActivity {
 
@@ -71,6 +74,13 @@ public class ColorsetActivity extends AppCompatActivity {
         } else if(type.equals("green")){
             setGreen();
         }
+
+        drawableButOval = (GradientDrawable) getResources().getDrawable(R.drawable.but_oval);
+        drawableElipseWhiteblue = (GradientDrawable) getResources().getDrawable(R.drawable.elipse_whiteblue);
+        drawableRadiusLayout = (GradientDrawable) getResources().getDrawable(R.drawable.radius_layout);
+        drawableRadiusMainblue = (GradientDrawable) getResources().getDrawable(R.drawable.radius_mainblue);
+        drawableRadiusSearchLayout = (GradientDrawable) getResources().getDrawable(R.drawable.radius_search_layout);
+        drawableRadiusWhiteblue = (GradientDrawable) getResources().getDrawable(R.drawable.radius_whiteblue);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override

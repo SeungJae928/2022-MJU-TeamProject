@@ -11,6 +11,7 @@ import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -30,6 +31,7 @@ import android.view.MenuItem;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -63,12 +65,13 @@ public class FindActivity extends AppCompatActivity {
     private ImageButton button2;
     private String type;
 
+    public String sharing;
 
-
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        Button mButton, addButton, alarmButton;
+        Button mButton, addButton, alarmButton, share_btn;
         d = new Dijkstra(this);
 
         db = new UserDBHelper(FindActivity.this);
@@ -117,14 +120,14 @@ public class FindActivity extends AppCompatActivity {
                 way = !way;
             }
         });
-      
+
         Intent intent = getIntent();
 
         EditText start_main = (EditText) findViewById(R.id.searchView11);
         EditText end_main = (EditText) findViewById(R.id.searchView13);
         start_main.setText(intent.getStringExtra("start"));
         end_main.setText(intent.getStringExtra("end"));
-      
+
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -141,7 +144,7 @@ public class FindActivity extends AppCompatActivity {
                 end.setText(changeEnd);
             }
         });
-      
+
 
         timeTv = (TextView) findViewById(R.id.clockView);
 
@@ -156,6 +159,10 @@ public class FindActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "하차 알림이 실행중입니다.", Toast.LENGTH_LONG).show();
                         return;
                     }
+                }
+
+                if (timeSecond == -1) {
+                    return;
                 }
 
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(FindActivity.this, "default");
@@ -212,6 +219,24 @@ public class FindActivity extends AppCompatActivity {
         //  텍스트뷰 받아오기
         mtextView = findViewById(R.id.clockView);
 
+        share_btn = findViewById(R.id.share_btn);
+
+        share_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent Sharing_intent = new Intent(Intent.ACTION_SEND);
+                Sharing_intent.setType("text/plain");
+
+                String sharing  = FindActivity.this.sharing;
+
+                Sharing_intent.putExtra(Intent.EXTRA_TEXT, sharing );
+
+                Intent Sharing = Intent.createChooser(Sharing_intent, "공유하기");
+                startActivity(Sharing);
+            }
+        });
+
+
     } // onCreate
 
     private Handler mHandler = new Handler();
@@ -261,6 +286,13 @@ public class FindActivity extends AppCompatActivity {
 
     // 버튼이 눌렸을 때
     public void mOnClick(View view) {
+
+        View v = FindActivity.this.getCurrentFocus();
+        if (v != null) {
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+        }
+
         // 팝업 메뉴 객체 생성
         PopupMenu popup = new PopupMenu(this, view);
 
@@ -296,6 +328,7 @@ public class FindActivity extends AppCompatActivity {
             Integer e = 0;
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
+
                 if (!start.getText().toString().equals("") && !end.getText().toString().equals("")){
                     s = Integer.parseInt(start.getText().toString());
                     e = Integer.parseInt(end.getText().toString());
@@ -338,9 +371,6 @@ public class FindActivity extends AppCompatActivity {
                             }
                             tp = 2;
                             break;
-                        case R.id.minimum:
-                            //
-                            break;
                     }
 
                 } catch (IOException e) {
@@ -379,9 +409,6 @@ public class FindActivity extends AppCompatActivity {
                             cost1 = fr1.getCost() + "원";
                             cost2 = fr2.getCost() + "원";
                         }
-                        break;
-                    case R.id.minimum:
-                        //
                         break;
                 }
 
@@ -422,6 +449,30 @@ public class FindActivity extends AppCompatActivity {
 
                 st.setText(details[0]);
                 info.setText(details[1] + ", " + details[2]);
+
+                sharing = "경로 공유\n\n"
+                        + "출발역: " + start.getText();
+                if (FindActivity.this.way) {
+                    sharing += "\n경유역: " + way;
+                }
+                sharing += "\n도착역: " + end.getText() + "\n\n이동 경로: ";
+                for (int i = 0; i < fr1.getRoute().size(); i++) {
+                    sharing += fr1.getRoute().get(i);
+                    if (i != fr1.getRoute().size()-1) {
+                        sharing += " -> ";
+                    }
+                }
+                for (int i = 0; i < fr2.getRoute().size(); i++) {
+                    sharing += fr2.getRoute().get(i);
+                    if (i != fr2.getRoute().size()-1) {
+                        sharing += " -> ";
+                    }
+                }
+                sharing += "\n\n최단 시간: " + details[0];
+                sharing += "\n최소 비용: " + d.getTotal(fr1.getRoute(), "cost")
+                        + d.getTotal(fr2.getRoute(), "cost");
+
+                System.out.println(sharing);
 
                 //최근 이용 db에 역 이름 등록
                 try {
