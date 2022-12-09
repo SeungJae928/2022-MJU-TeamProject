@@ -17,6 +17,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -91,9 +93,21 @@ public class RecentlyUsedActivity extends AppCompatActivity {
 
             TextView st_name_start = (TextView) convertView.findViewById(R.id.st_name_rce_start);
             TextView st_name_end = (TextView) convertView.findViewById(R.id.st_name_rce_end);
+            TextView searchtype = (TextView) convertView.findViewById(R.id.search_type);
 
             st_name_start.setText(stItem.getStart());
             st_name_end.setText(stItem.getEnd());
+            switch (stItem.getType()) {
+                case 0 :
+                    searchtype.setText("최단 시간");
+                    break;
+                case 1 :
+                    searchtype.setText("최적 경로");
+                    break;
+                case 2 :
+                    searchtype.setText("최소 금액");
+                    break;
+            }
 
             //각 아이템 선택 event
             convertView.setOnClickListener(new View.OnClickListener() {

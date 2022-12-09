@@ -6,6 +6,7 @@ public class Recent {
     public String userSid;
     public String start;
     public String end;
+    public int type;
 
     public String getSid() {
         return sid;
@@ -37,5 +38,13 @@ public class Recent {
 
     public void setEnd(String end) {
         this.end = end;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 }

@@ -32,6 +32,7 @@ class UserDBHelper extends SQLiteOpenHelper {
     public static final String COL_2_3="userSID";
     public static final String COL_3_3="Start";
     public static final String COL_4_3="End_";
+    public static final String COL_5_3="type";
 
     private SQLiteDatabase sDB;
 
@@ -56,7 +57,8 @@ class UserDBHelper extends SQLiteOpenHelper {
                 + " (" + COL_1_3 + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COL_2_3 + " TEXT, "
                 + COL_3_3 + " TEXT, "
-                + COL_4_3 + " TEXT); ");
+                + COL_4_3 + " TEXT, "
+                + COL_5_3 + " INTEGER); ");
     }
 
     //버전 업그레이드
@@ -100,7 +102,7 @@ class UserDBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public boolean insertDatatoRecentlyUsed(String userID, String start, String end){
+    public boolean insertDatatoRecentlyUsed(String userID, String start, String end, int type){
         SQLiteDatabase db= this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         List<Recent> list = getRecentlyUsedData(userID);
@@ -108,6 +110,7 @@ class UserDBHelper extends SQLiteOpenHelper {
         contentValues.put(COL_2_3,userID);
         contentValues.put(COL_3_3,start);
         contentValues.put(COL_4_3,end);
+        contentValues.put(COL_5_3,type);
 
         long result = db.insert(TABLE_NAME3,null,contentValues);
 
@@ -300,6 +303,7 @@ class UserDBHelper extends SQLiteOpenHelper {
                     recent.setUserSid(mCur.getString(1));
                     recent.setStart(mCur.getString(2));
                     recent.setEnd(mCur.getString(3));
+                    recent.setType(mCur.getInt(4));
 
                     // 리스트에 넣기
                     recentList.add(recent);

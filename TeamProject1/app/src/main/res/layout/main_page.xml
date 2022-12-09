@@ -1371,7 +1371,7 @@
         android:id="@+id/navigationView"
         android:layout_width="415dp"
         android:layout_height="82dp"
-        android:background="#3F9CF1"
+        android:background="@color/blue_3F9CF1"
         android:paddingLeft="30dp"
         android:paddingTop="20dp"
         android:paddingRight="30dp"

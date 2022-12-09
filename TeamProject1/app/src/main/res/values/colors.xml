@@ -9,8 +9,18 @@
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#FFFF00</color>
     <color name="red">#FF0000</color>
-    <color name="mainblue">#3f9cf1</color>
-    <color name="lightblue">#b3d5f2</color>
-    <color name="lightgray">#EDEDED</color>
-    <color name="whiteblue">#e1e9f6</color>
+    <color name="gray_EDEDED">#ededed</color>
+    <color name="blue_3F9CF1">#3f9cf1</color>
+    <color name="blue_B3D5F2">#b3d5f2</color>
+    <color name="blue_E1E9F6">#e1e9f6</color>
+    <color name="blue_EFF3FA">#EFF3FA</color>
+    <color name="pink_F13FCA">#F13FCA</color>
+    <color name="pink_F2B3DD">#F2B3DD</color>
+    <color name="pink_F6E1F1">#F6E1F1</color>
+    <color name="pink_FAEFF8">#FAEFF8</color>
+    <color name="green_64AE70">#64AE70</color>
+    <color name="green_B3F2B9">#B3F2B9</color>
+    <color name="green_E1F6E2">#E1F6E2</color>
+    <color name="green_EFFAF1">#EFFAF1</color>
+
 </resources>
