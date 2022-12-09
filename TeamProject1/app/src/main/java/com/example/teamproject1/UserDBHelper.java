@@ -34,6 +34,11 @@ class UserDBHelper extends SQLiteOpenHelper {
     public static final String COL_4_3="End_";
     public static final String COL_5_3="type";
 
+    public static final String TABLE_NAME4= "RecentlySearched";
+    public static final String COL_1_4="ID";
+    public static final String COL_2_4="userSID";
+    public static final String COL_3_4="Station";
+
     private SQLiteDatabase sDB;
 
     public UserDBHelper(@Nullable Context context){
@@ -59,6 +64,10 @@ class UserDBHelper extends SQLiteOpenHelper {
                 + COL_3_3 + " TEXT, "
                 + COL_4_3 + " TEXT, "
                 + COL_5_3 + " INTEGER); ");
+        db.execSQL("CREATE TABLE " + TABLE_NAME4
+                + " (" + COL_1_4 + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + COL_2_4 + " TEXT, "
+                + COL_3_4 + " TEXT); ");
     }
 
     //버전 업그레이드
@@ -117,6 +126,32 @@ class UserDBHelper extends SQLiteOpenHelper {
         if(list != null && list.size() > 9){
             for(int i = 0; list.size() != 9;){
                 Recent tmp = list.get(i);
+                deleteRecData(tmp.getSid());
+                list.remove(i);
+            }
+        }
+
+        if(result == -1){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    public boolean insertDatatoRecentlySearched(String userID, String station){
+        SQLiteDatabase db= this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        List<Searched> list = getRecentlySearchedData(userID);
+
+        contentValues.put(COL_2_4,userID);
+        contentValues.put(COL_3_4,station);
+
+        long result = db.insert(TABLE_NAME4,null,contentValues);
+
+        if(list != null && list.size() > 4){
+            for(int i = 0; list.size() != 4;){
+                Searched tmp = list.get(i);
                 deleteRecData(tmp.getSid());
                 list.remove(i);
             }
@@ -311,6 +346,42 @@ class UserDBHelper extends SQLiteOpenHelper {
 
             }
             return recentList;
+        }
+        catch (SQLException mSQLException)
+        {
+            Log.e("11", "getTestData >>"+ mSQLException.toString());
+            throw mSQLException;
+        }
+    }
+
+    public List getRecentlySearchedData(String userSid)
+    {
+        sDB = this.getReadableDatabase();
+        try
+        {
+            String sql ="SELECT * FROM " + TABLE_NAME4 + " where userSID='"+userSid+"';";
+
+            List list = new ArrayList();
+
+            Searched res = null;
+
+            Cursor mCur = sDB.rawQuery(sql, null);
+            if (mCur!=null)
+            {
+                // 칼럼의 마지막까지
+                while( mCur.moveToNext() ) {
+
+                    res = new Searched();
+
+                    res.setSid(mCur.getString(0));
+                    res.setUserSid(mCur.getString(1));
+                    res.setStation(mCur.getString(2));
+                    // 리스트에 넣기
+                    list.add(res);
+                }
+
+            }
+            return list;
         }
         catch (SQLException mSQLException)
         {
