@@ -1,6 +1,5 @@
 package com.example.teamproject1;
 
-import static com.example.teamproject1.MainActivity.act;
 import static com.example.teamproject1.MainActivity.userSid;
 
 import android.annotation.SuppressLint;
@@ -46,8 +45,6 @@ public class ColorsetActivity extends AppCompatActivity {
     private View mainNav;
 
     private String type = "blue";
-
-    private Activity pre_main = (MainActivity) act;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
