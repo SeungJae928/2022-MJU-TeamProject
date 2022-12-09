@@ -61,7 +61,7 @@ public class FindActivity extends AppCompatActivity {
     private UserDBHelper db;
     private List<Recent> recentList;
     private int tp;
-    private Thread thread = null;
+    private static Thread thread = null;
     private ImageButton button2;
     private String type;
 
