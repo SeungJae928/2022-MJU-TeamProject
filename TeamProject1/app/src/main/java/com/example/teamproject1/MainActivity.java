@@ -367,7 +367,7 @@ public class MainActivity extends AppCompatActivity {
         List<StationInfo> list = new ArrayList<>();
         long seed = 845489;
         Random rand = new Random(seed);
-        Random rand2 = new Random(System.currentTimeMillis());
+        Random rand2 = new Random(seed);
         int n = 0;
         list.add(new StationInfo("101", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
         list.add(new StationInfo("102", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
