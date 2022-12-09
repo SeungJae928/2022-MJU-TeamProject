@@ -59,6 +59,8 @@ public class FindActivity extends AppCompatActivity {
     private List<Recent> recentList;
     private Thread thread = null;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -94,6 +96,13 @@ public class FindActivity extends AppCompatActivity {
                 way = !way;
             }
         });
+
+        Intent intent = getIntent();
+
+        EditText start_main = (EditText) findViewById(R.id.searchView11);
+        EditText end_main = (EditText) findViewById(R.id.searchView13);
+        start_main.setText(intent.getStringExtra("start"));
+        end_main.setText(intent.getStringExtra("end"));
 
         timeTv = (TextView) findViewById(R.id.clockView);
 
@@ -255,7 +264,7 @@ public class FindActivity extends AppCompatActivity {
                 } else {
                     return false;
                 }
-                if (!way.getText().toString().equals("")){
+                if (!way.getText().toString().equals("") && FindActivity.this.way){
                     w = Integer.parseInt(way.getText().toString());
                 }
                 // 각 메뉴별 아이디를 조사한 후 할일을 적어줌
