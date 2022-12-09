@@ -1,8 +1,10 @@
 package com.example.teamproject1;
 
+import static com.example.teamproject1.MainActivity.act;
 import static com.example.teamproject1.MainActivity.userSid;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -45,6 +47,8 @@ public class ColorsetActivity extends AppCompatActivity {
 
     private String type = "blue";
 
+    private Activity pre_main = (MainActivity) act;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,18 +79,10 @@ public class ColorsetActivity extends AppCompatActivity {
             setGreen();
         }
 
-        drawableButOval = (GradientDrawable) getResources().getDrawable(R.drawable.but_oval);
-        drawableElipseWhiteblue = (GradientDrawable) getResources().getDrawable(R.drawable.elipse_whiteblue);
-        drawableRadiusLayout = (GradientDrawable) getResources().getDrawable(R.drawable.radius_layout);
-        drawableRadiusMainblue = (GradientDrawable) getResources().getDrawable(R.drawable.radius_mainblue);
-        drawableRadiusSearchLayout = (GradientDrawable) getResources().getDrawable(R.drawable.radius_search_layout);
-        drawableRadiusWhiteblue = (GradientDrawable) getResources().getDrawable(R.drawable.radius_whiteblue);
-
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.putExtra("type", type);
                 startActivity(intent);
                 finish();
             }
@@ -132,7 +128,6 @@ public class ColorsetActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        intent.putExtra("type", type);
         startActivity(intent);
         finish();
     }

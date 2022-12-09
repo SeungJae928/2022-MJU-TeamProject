@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
     private List<StationInfo> stList;
     private UserDBHelper db;
 
-
     private final long finishTime= 1000;
     private long pressTime = 0;
 
