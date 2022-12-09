@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton menuButton5;
     private List<MyButton> btnlist;
     private Button searchButton;
+    private List<StationInfo> stList;
 
     private final long finishTime= 1000;
     private long pressTime = 0;
@@ -42,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
 //        actionBar.hide();
 
         btnlist = this.getButtonList();
+        stList = this.getStList();
 
         for(MyButton btn : btnlist){
             btn.getBtn().setOnClickListener(new View.OnClickListener() {
@@ -110,7 +113,8 @@ public class MainActivity extends AppCompatActivity {
         menuButton5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Todo 테마색 바꾸기 구현
+                Intent intent = new Intent(getApplicationContext(), ColorsetActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -123,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
 
     @Override
     public void onBackPressed() {
@@ -275,6 +280,134 @@ public class MainActivity extends AppCompatActivity {
         list.add(new MyButton(findViewById(R.id.station_902), "902"));
         list.add(new MyButton(findViewById(R.id.station_903), "903"));
         list.add(new MyButton(findViewById(R.id.station_904), "904"));
+
+        return list;
+    }
+
+    public static List<StationInfo> getStList() {
+        List<StationInfo> list = new ArrayList<>();
+        long seed = 845489;
+        Random rand = new Random(seed);
+        Random rand2 = new Random(System.currentTimeMillis());
+        list.add(new StationInfo("101", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("102", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("103", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("104", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("105", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("106", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("107", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("108", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("109", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("110", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("111", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("112", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("113", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("114", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("115", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("116", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("117", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("118", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("119", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("120", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("121", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("122", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("123", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+
+        list.add(new StationInfo("201", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("202", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("203", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("204", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("205", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("206", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("207", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("208", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("209", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("210", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("211", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("212", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("213", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("214", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("215", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("216", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("217", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+
+        list.add(new StationInfo("301", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("302", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("303", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("304", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("305", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("306", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("307", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("308", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+
+        list.add(new StationInfo("401", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("402", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("403", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("404", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("405", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("406", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("407", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("408", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("409", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("410", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("411", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("412", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("413", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("414", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("415", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("416", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("417", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+
+        list.add(new StationInfo("501", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("502", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("503", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("504", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("505", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("506", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("507", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+
+        list.add(new StationInfo("601", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("602", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("603", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("604", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("605", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("606", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("607", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("608", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("609", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("610", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("611", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("612", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("613", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("614", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("615", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("616", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("617", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("618", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("619", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("620", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("621", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("622", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+
+        list.add(new StationInfo("701", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("702", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("703", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("704", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("705", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("706", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("707", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+
+        list.add(new StationInfo("801", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("802", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("803", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("804", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("805", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("806", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+
+        list.add(new StationInfo("901", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("902", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("903", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+        list.add(new StationInfo("904", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
 
         return list;
     }

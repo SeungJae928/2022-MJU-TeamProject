@@ -11,7 +11,7 @@
         android:id="@+id/toolbar"
         android:layout_width="415dp"
         android:layout_height="68dp"
-        android:background="#3F9CF1"
+        android:background="@color/blue_3F9CF1"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="0dp">

@@ -33,6 +33,7 @@
         <activity android:name=".SearchActivity"/>
         <activity android:name=".InfoActivity"/>
         <activity android:name=".FavoriteActivity"/>
+        <activity android:name=".ColorsetActivity"/>
         
         <service android:name=".FindActivity"
             android:stopWithTask="true" />
