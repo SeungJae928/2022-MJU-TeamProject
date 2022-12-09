@@ -61,7 +61,7 @@ public class FindActivity extends AppCompatActivity {
     private UserDBHelper db;
     private List<Recent> recentList;
     private int tp;
-    private Thread thread = null;
+    private static Thread thread = null;
     private ImageButton button2;
     private String type;
 
@@ -384,7 +384,7 @@ public class FindActivity extends AppCompatActivity {
         sharing = "경로 공유\n\n"
                 + "출발역: " + start.getText();
         if (FindActivity.this.way) {
-            sharing += "\n경유역: " + way;
+            sharing += "\n경유역: " + w;
         }
         sharing += "\n도착역: " + end.getText() + "\n\n이동 경로: ";
         for (int i = 0; i < fr1.getRoute().size(); i++) {
