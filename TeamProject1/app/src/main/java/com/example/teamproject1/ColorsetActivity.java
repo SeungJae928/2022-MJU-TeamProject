@@ -61,6 +61,9 @@ public class ColorsetActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("type", type);
+                startActivity(intent);
                 finish();
             }
         });

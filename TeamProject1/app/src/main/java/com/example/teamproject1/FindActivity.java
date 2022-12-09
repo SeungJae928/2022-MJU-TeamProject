@@ -354,9 +354,6 @@ public class FindActivity extends AppCompatActivity {
                             }
                             tp = 2;
                             break;
-                        case R.id.minimum:
-                            //
-                            break;
                     }
 
                 } catch (IOException e) {
@@ -395,9 +392,6 @@ public class FindActivity extends AppCompatActivity {
                             cost1 = fr1.getCost() + "원";
                             cost2 = fr2.getCost() + "원";
                         }
-                        break;
-                    case R.id.minimum:
-                        //
                         break;
                 }
 
