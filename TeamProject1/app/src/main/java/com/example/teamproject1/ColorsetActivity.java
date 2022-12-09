@@ -1,12 +1,15 @@
 package com.example.teamproject1;
 
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class ColorsetActivity extends AppCompatActivity {
 
@@ -37,6 +40,7 @@ public class ColorsetActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //파란테마 변경
+
             }
         });
 
@@ -44,6 +48,10 @@ public class ColorsetActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //pink
+                Toolbar tb = (Toolbar)findViewById(R.id.toolbar);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    tb.setBackgroundColor(getColor(R.color.pink_FAEFF8));
+                }
             }
         });
 
