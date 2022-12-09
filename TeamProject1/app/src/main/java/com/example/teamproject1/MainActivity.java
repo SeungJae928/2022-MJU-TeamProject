@@ -6,12 +6,15 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean btn_state = true;
 
+    private String type = "blue";
+
     public static String userSid;
 
     private String start = "";
@@ -45,6 +50,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main_page);
         ActionBar actionBar = getSupportActionBar();
 //        actionBar.hide();
+
+        type = getIntent().getStringExtra("type");
+
+        NavigationView nv = (NavigationView) findViewById(R.id.navigationView);
+        if (type.equals("blue")) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                nv.setBackgroundColor(getColor(R.color.blue_3F9CF1));
+            }
+        } else if (type.equals("pink")) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                nv.setBackgroundColor(getColor(R.color.pink_F13FCA));
+            }
+        } else if (type.equals("pink")) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                nv.setBackgroundColor(getColor(R.color.green_64AE70));
+            }
+        }
 
         btnlist = this.getButtonList();
         stList = this.getStList();

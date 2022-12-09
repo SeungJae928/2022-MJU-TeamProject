@@ -70,7 +70,11 @@
             android:layout_alignParentTop="true"
             android:layout_marginLeft="128dp"
             android:layout_marginTop="445dp"
-            android:background="@drawable/login_button" />
+            android:text="Login"
+            android:textSize="24dp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:background="@drawable/join_button" />
 
         <Button
             android:id="@+id/join_button"
@@ -80,6 +84,10 @@
             android:layout_alignParentTop="true"
             android:layout_marginLeft="128dp"
             android:layout_marginTop="505dp"
+            android:text="JOIN"
+            android:textSize="24dp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
             android:background="@drawable/join_button" />
 
         <Button
