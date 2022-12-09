@@ -5,6 +5,8 @@ public class Recent {
     public String sid;
     public String userSid;
     public String start;
+    public String way;
+
     public String end;
     public int type;
 
@@ -30,6 +32,14 @@ public class Recent {
 
     public void setStart(String start) {
         this.start = start;
+    }
+
+    public String getWay() {
+        return way;
+    }
+
+    public void setWay(String way) {
+        this.way = way;
     }
 
     public String getEnd() {

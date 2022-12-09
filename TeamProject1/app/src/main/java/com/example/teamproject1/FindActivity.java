@@ -67,7 +67,6 @@ public class FindActivity extends AppCompatActivity {
 
     public String sharing;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -109,12 +108,12 @@ public class FindActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (!way) {
                     toolbar.setLayoutParams(new LinearLayout.LayoutParams(toolbar.getLayoutParams().width, (int)(toolbar.getLayoutParams().height * 1.4)));
-                    addButton.setBackground(getDrawable(R.drawable.delete_button));
+                    addButton.setText("-");
                     waySearchView.setVisibility(SearchView.VISIBLE);
 
                 } else {
                     toolbar.setLayoutParams(new LinearLayout.LayoutParams(toolbar.getLayoutParams().width, (int)(toolbar.getLayoutParams().height / 1.4)));
-                    addButton.setBackground(getDrawable(R.drawable.add_button));
+                    addButton.setText("+");
                     waySearchView.setVisibility(SearchView.GONE);
                 }
                 way = !way;
@@ -123,10 +122,24 @@ public class FindActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        EditText start_main = (EditText) findViewById(R.id.searchView11);
-        EditText end_main = (EditText) findViewById(R.id.searchView13);
-        start_main.setText(intent.getStringExtra("start"));
-        end_main.setText(intent.getStringExtra("end"));
+        EditText start = (EditText) findViewById(R.id.searchView11);
+        EditText end = (EditText) findViewById(R.id.searchView13);
+        start.setText(intent.getStringExtra("start"));
+        waySearchView.setText(intent.getStringExtra("way"));
+        end.setText(intent.getStringExtra("end"));
+
+        String searchType = intent.getStringExtra("type");
+
+        if (intent.getStringExtra("way") != null && intent.getStringExtra("end") != null) {
+            way = true;
+            toolbar.setLayoutParams(new LinearLayout.LayoutParams(toolbar.getLayoutParams().width, (int)(toolbar.getLayoutParams().height * 1.4)));
+            addButton.setText("-");
+            waySearchView.setVisibility(SearchView.VISIBLE);
+        } else {
+            way = false;
+            addButton.setText("+");
+            waySearchView.setVisibility(SearchView.GONE);
+        }
 
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -236,6 +249,172 @@ public class FindActivity extends AppCompatActivity {
             }
         });
 
+        // 시작하자마자
+        // 경로 계산
+
+        TextView t1 = (TextView) findViewById(R.id.station1);
+        TextView t2 = (TextView) findViewById(R.id.station2);
+        TextView t3 = (TextView) findViewById(R.id.station3);
+
+        View l1 = (View) findViewById(R.id.line2);
+        TextView s1 = (TextView) findViewById(R.id.spend_time1);
+        TextView s2 = (TextView) findViewById(R.id.spend_time2);
+
+        View b1 = (View) findViewById(R.id.bar1);
+        View b2 = (View) findViewById(R.id.bar2);
+        TextView d1 = (TextView) findViewById(R.id.detail);
+        TextView d2 = (TextView) findViewById(R.id.detail2);
+
+        Integer s = 0;
+        Integer w = 0;
+        Integer e = 0;
+
+        if (!start.getText().toString().equals("") && !end.getText().toString().equals("")){
+            s = Integer.parseInt(start.getText().toString());
+            e = Integer.parseInt(end.getText().toString());
+            System.out.println(s + " " + e);
+        } else {
+            return;
+        }
+        if (!waySearchView.getText().toString().equals("") && FindActivity.this.way){
+            w = Integer.parseInt(waySearchView.getText().toString());
+        }
+        // 각 메뉴별 아이디를 조사한 후 할일을 적어줌
+        FindRoute fr1 = new FindRoute(-1, new ArrayList<>());
+        FindRoute fr2 = new FindRoute(-1, new ArrayList<>());
+        try {
+            if (searchType.equals("최적 경로")) {
+                if (w == 0) {
+                    fr1 = d.dijkstra(s.intValue(), e.intValue(), 1);
+                } else {
+                    fr1 = d.dijkstra(s.intValue(), w.intValue(), 1);
+                    fr2 = d.dijkstra(w.intValue(), e.intValue(), 1);
+                }
+                tp = 1;
+            } else if (searchType.equals("최단 시간")) {
+                if (w == 0) {
+                    fr1 = d.dijkstra(s.intValue(), e.intValue(),0);
+                } else {
+                    fr1 = d.dijkstra(s.intValue(), w.intValue(), 0);
+                    fr2 = d.dijkstra(w.intValue(), e.intValue(), 0);
+                }
+                tp = 0;
+            } else if (searchType.equals("최소 금액")) {
+                if (w == 0) {
+                    fr1 = d.dijkstra(s.intValue(), e.intValue(),2);
+                } else {
+                    fr1 = d.dijkstra(s.intValue(), w.intValue(), 2);
+                    fr2 = d.dijkstra(w.intValue(), e.intValue(), 2);
+                }
+                tp = 2;
+            }
+        } catch (IOException e1) {
+            System.out.println(e1);
+            return;
+        } catch (Exception e1) {
+            System.out.println(e1);
+            Toast.makeText(getApplicationContext(), e1.getMessage(), Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        String cost1 = "";
+        String cost2 = "";
+
+        if (searchType.equals("최적 경로")) {
+            if (w == 0) {
+                cost1 = fr1.getCost() + "미터";
+            } else {
+                cost1 = fr1.getCost() + "미터";
+                cost2 = fr2.getCost() + "미터";
+            }
+        } else if (searchType.equals("최단 시간")) {
+            if (w == 0) {
+                cost1 = fr1.getCost() + "초";
+            } else {
+                cost1 = fr1.getCost() + "초";
+                cost2 = fr2.getCost() + "초";
+            }
+        } else if (searchType.equals("최소 금액")) {
+            if (w == 0) {
+                cost1 = fr1.getCost() + "원";
+            } else {
+                cost1 = fr1.getCost() + "원";
+                cost2 = fr2.getCost() + "원";
+            }
+        }
+
+        String[] details = new String[0];
+
+        if (w == 0) {
+            l1.setVisibility(View.GONE);
+            s2.setVisibility(View.GONE);
+            t3.setVisibility(View.GONE);
+            b2.setVisibility(View.GONE);
+            d2.setVisibility(View.GONE);
+            t1.setText(s.toString());
+            t2.setText(e.toString());
+            s1.setText(cost1);
+            d1.setText(fr1.getRoute().toString());
+            details = d.getDetails(fr1.getRoute());
+            timeSecond = d.getTotal(fr1.getRoute(), "time");
+        } else {
+            l1.setVisibility(View.VISIBLE);
+            s2.setVisibility(View.VISIBLE);
+            t3.setVisibility(View.VISIBLE);
+            b2.setVisibility(View.VISIBLE);
+            d2.setVisibility(View.VISIBLE);
+            t1.setText(s.toString());
+            t2.setText(w.toString());
+            t3.setText(e.toString());
+            s1.setText(cost1);
+            s2.setText(cost2);
+            d1.setText(fr1.getRoute().toString());
+            d2.setText(fr2.getRoute().toString());
+            details = d.getDetails(fr1.getRoute(), fr2.getRoute());
+            timeSecond = d.getTotal(fr1.getRoute(), "time")
+                    + d.getTotal(fr2.getRoute(), "time");
+        }
+
+        TextView st = (TextView) findViewById(R.id.startTime);
+        TextView info = (TextView) findViewById(R.id.information);
+
+        st.setText(details[0]);
+        info.setText(details[1] + ", " + details[2]);
+
+        sharing = "경로 공유\n\n"
+                + "출발역: " + start.getText();
+        if (FindActivity.this.way) {
+            sharing += "\n경유역: " + way;
+        }
+        sharing += "\n도착역: " + end.getText() + "\n\n이동 경로: ";
+        for (int i = 0; i < fr1.getRoute().size(); i++) {
+            sharing += fr1.getRoute().get(i);
+            if (i != fr1.getRoute().size()-1) {
+                sharing += " -> ";
+            }
+        }
+        for (int i = 0; i < fr2.getRoute().size(); i++) {
+            sharing += fr2.getRoute().get(i);
+            if (i != fr2.getRoute().size()-1) {
+                sharing += " -> ";
+            }
+        }
+        sharing += "\n\n소요 시간: " + details[0];
+        sharing += "\n필요 금액: " + (d.getTotal(fr1.getRoute(), "cost")
+                + d.getTotal(fr2.getRoute(), "cost"));
+
+        System.out.println(sharing);
+
+        //최근 이용 db에 역 이름 등록
+        try {
+            for(Recent item : recentList){
+                if(item.getStart().equals(s.toString()) && item.getEnd().equals(e.toString()))
+                    throw new reduplicationEx("중복 데이터 입력 방지");
+            }
+            db.insertDatatoRecentlyUsed(userSid, s.toString(), w.toString(), e.toString(), tp);
+        } catch (reduplicationEx e1) {
+            System.out.println(e1.getMessage());
+        }
 
     } // onCreate
 
@@ -468,19 +647,19 @@ public class FindActivity extends AppCompatActivity {
                         sharing += " -> ";
                     }
                 }
-                sharing += "\n\n최단 시간: " + details[0];
-                sharing += "\n최소 비용: " + d.getTotal(fr1.getRoute(), "cost")
-                        + d.getTotal(fr2.getRoute(), "cost");
+                sharing += "\n\n소요 시간: " + details[0];
+                sharing += "\n필요 금액: " + (d.getTotal(fr1.getRoute(), "cost")
+                        + d.getTotal(fr2.getRoute(), "cost"));
 
                 System.out.println(sharing);
 
                 //최근 이용 db에 역 이름 등록
                 try {
                     for(Recent item : recentList){
-                        if(item.getStart().equals(s.toString()) && item.getEnd().equals(e.toString()))
+                        if(item.getStart().equals(s.toString()) && item.getWay().equals(w.toString()) && item.getEnd().equals(e.toString()))
                             throw new reduplicationEx("중복 데이터 입력 방지");
                     }
-                    db.insertDatatoRecentlyUsed(userSid, s.toString(), e.toString(), tp);
+                    db.insertDatatoRecentlyUsed(userSid, s.toString(), w.toString(), e.toString(), tp);
                 } catch (reduplicationEx e) {
                     System.out.println(e.getMessage());
                 }

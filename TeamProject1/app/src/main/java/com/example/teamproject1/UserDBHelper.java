@@ -32,8 +32,9 @@ class UserDBHelper extends SQLiteOpenHelper {
     public static final String COL_1_3="ID";
     public static final String COL_2_3="userSID";
     public static final String COL_3_3="Start";
-    public static final String COL_4_3="End_";
-    public static final String COL_5_3="type";
+    public static final String COL_4_3="Way";
+    public static final String COL_5_3="End_";
+    public static final String COL_6_3="type";
 
     public static final String TABLE_NAME4= "RecentlySearched";
     public static final String COL_1_4="ID";
@@ -65,7 +66,8 @@ class UserDBHelper extends SQLiteOpenHelper {
                 + COL_2_3 + " TEXT, "
                 + COL_3_3 + " TEXT, "
                 + COL_4_3 + " TEXT, "
-                + COL_5_3 + " INTEGER); ");
+                + COL_5_3 + " TEXT, "
+                + COL_6_3 + " INTEGER); ");
         db.execSQL("CREATE TABLE " + TABLE_NAME4
                 + " (" + COL_1_4 + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COL_2_4 + " TEXT, "
@@ -114,15 +116,16 @@ class UserDBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public boolean insertDatatoRecentlyUsed(String userID, String start, String end, int type){
+    public boolean insertDatatoRecentlyUsed(String userID, String start, String way, String end, int type){
         SQLiteDatabase db= this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         List<Recent> list = getRecentlyUsedData(userID);
 
         contentValues.put(COL_2_3,userID);
         contentValues.put(COL_3_3,start);
-        contentValues.put(COL_4_3,end);
-        contentValues.put(COL_5_3,type);
+        contentValues.put(COL_4_3,way);
+        contentValues.put(COL_5_3,end);
+        contentValues.put(COL_6_3,type);
 
         long result = db.insert(TABLE_NAME3,null,contentValues);
 
@@ -355,8 +358,9 @@ class UserDBHelper extends SQLiteOpenHelper {
                     recent.setSid(mCur.getString(0));
                     recent.setUserSid(mCur.getString(1));
                     recent.setStart(mCur.getString(2));
-                    recent.setEnd(mCur.getString(3));
-                    recent.setType(mCur.getInt(4));
+                    recent.setWay(mCur.getString(3));
+                    recent.setEnd(mCur.getString(4));
+                    recent.setType(mCur.getInt(5));
 
                     // 리스트에 넣기
                     recentList.add(recent);
