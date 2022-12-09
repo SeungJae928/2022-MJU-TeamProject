@@ -494,16 +494,21 @@ public class FindActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
 
-                if (!start.getText().toString().equals("") && !end.getText().toString().equals("")){
-                    s = Integer.parseInt(start.getText().toString());
-                    e = Integer.parseInt(end.getText().toString());
-                    System.out.println(s + " " + e);
-                } else {
+                try {
+                    if (!start.getText().toString().equals("") && !end.getText().toString().equals("")){
+                        s = Integer.parseInt(start.getText().toString());
+                        e = Integer.parseInt(end.getText().toString());
+                    } else {
+                        return false;
+                    }
+                    if (!way.getText().toString().equals("") && FindActivity.this.way){
+                        w = Integer.parseInt(way.getText().toString());
+                    }
+                } catch (NumberFormatException e1) {
+                    Toast.makeText(getApplicationContext(), "숫자를 입력해주세요.", Toast.LENGTH_LONG).show();
                     return false;
                 }
-                if (!way.getText().toString().equals("") && FindActivity.this.way){
-                    w = Integer.parseInt(way.getText().toString());
-                }
+
                 // 각 메뉴별 아이디를 조사한 후 할일을 적어줌
                 FindRoute fr1 = new FindRoute(-1, new ArrayList<>());
                 FindRoute fr2 = new FindRoute(-1, new ArrayList<>());
