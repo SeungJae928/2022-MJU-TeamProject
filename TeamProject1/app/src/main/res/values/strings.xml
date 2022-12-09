@@ -4,6 +4,7 @@
     <string name="todo">TODO</string>
     <string name="search_history">최근 검색 기록</string>
     <string name="text_time">OO일 OO시 OO분 출발</string>
+    <string name="share_start">경로 공유하기</string>
     <string name="best">최적 경로</string>
     <string name="fast">최단 시간</string>
     <string name="min_amount">최소 금액</string>

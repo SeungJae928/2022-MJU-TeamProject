@@ -1,15 +1,27 @@
 package com.example.teamproject1;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.lang.ref.WeakReference;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class TestActivity extends AppCompatActivity {
 
-    CheckBox fav_checkbox;
     UserDBHelper db;
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,34 +30,8 @@ public class TestActivity extends AppCompatActivity {
 
         db = new UserDBHelper(TestActivity.this);
 
-//        db.insertDatatoRecentlyUsed("test", "1", "1");
-//        db.insertDatatoRecentlyUsed("test", "2", "1");
-//        db.insertDatatoRecentlyUsed("test", "3", "1");
-//        db.insertDatatoRecentlyUsed("test", "4", "1");
-//        db.insertDatatoRecentlyUsed("test", "5", "1");
-//        db.insertDatatoRecentlyUsed("test", "6", "1");
-//        db.insertDatatoRecentlyUsed("test", "7", "1");
-//        db.insertDatatoRecentlyUsed("test", "8", "1");
-//        db.insertDatatoRecentlyUsed("test", "9", "1");
-//        db.insertDatatoRecentlyUsed("test", "10", "1");
-//        db.insertDatatoRecentlyUsed("test", "11", "1");
-//        db.insertDatatoRecentlyUsed("test", "12", "1");
-//        db.insertDatatoRecentlyUsed("test", "13", "1");
-
-
-//        db = new UserDBHelper(TestActivity.this);
-//
-//        fav_checkbox = findViewById(R.id.fav_checkbox);
-//        fav_checkbox.setButtonDrawable(R.drawable.btn_selector);
-//        fav_checkbox.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if(fav_checkbox.isChecked()){
-//                    db.insertDatatoFavorite("test", "test");
-//                } else {
-//                    db.deleteFavData("test");
-//                }
-//            }
-//        });
+        textView = findViewById(R.id.textView11);
     }
+
+
 }

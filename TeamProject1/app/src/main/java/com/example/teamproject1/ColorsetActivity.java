@@ -1,10 +1,14 @@
 package com.example.teamproject1;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.NumberPicker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,7 +19,9 @@ public class ColorsetActivity extends AppCompatActivity {
     private Button pink;
     private Button green;
     private UserDBHelper db;
+    private GradientDrawable drawableAddButton;
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +31,8 @@ public class ColorsetActivity extends AppCompatActivity {
         blue = findViewById(R.id.blue_btn);
         pink = findViewById(R.id.pink_btn);
         green = findViewById(R.id.green_btn);
+        drawableAddButton = (GradientDrawable) getResources().getDrawable(R.drawable.add_button);
+
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,6 +45,7 @@ public class ColorsetActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //파란테마 변경
+                drawableAddButton.setColor(Color.parseColor(String.valueOf(R.color.blue_B3D5F2)));
             }
         });
 
@@ -44,6 +53,7 @@ public class ColorsetActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //pink
+                drawableAddButton.setColor(Color.parseColor(String.valueOf(R.color.pink_F2B3DD)));
             }
         });
 
@@ -51,6 +61,7 @@ public class ColorsetActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //green
+                drawableAddButton.setColor(Color.parseColor(String.valueOf(R.color.green_B3F2B9)));
             }
         });
     }

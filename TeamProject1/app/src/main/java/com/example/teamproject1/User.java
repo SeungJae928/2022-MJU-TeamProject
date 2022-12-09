@@ -9,8 +9,6 @@ public class User {
     public String id;
     public String pw;
     public String name;
-    public List<Favorites> favoritesList;
-    public List<Recent> recentList;
 
     public String getSid() {
         return sid;
@@ -42,33 +40,5 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<Favorites> getFavoritesList() {
-        return favoritesList;
-    }
-
-    public void setFavoritesList(List<Favorites> favoritesList) {
-        this.favoritesList = favoritesList;
-    }
-
-    public List<Recent> getRecentList() {
-        return recentList;
-    }
-
-    public void setRecentList(List<Recent> recentList) {
-        this.recentList = recentList;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "sid='" + sid + '\'' +
-                ", id='" + id + '\'' +
-                ", pw='" + pw + '\'' +
-                ", name='" + name + '\'' +
-                ", favoritesList=" + favoritesList +
-                ", recentList=" + recentList +
-                '}';
     }
 }

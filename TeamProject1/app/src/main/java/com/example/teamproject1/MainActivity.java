@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -338,6 +339,7 @@ public class MainActivity extends AppCompatActivity {
         long seed = 845489;
         Random rand = new Random(seed);
         Random rand2 = new Random(System.currentTimeMillis());
+        int n = 0;
         list.add(new StationInfo("101", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
         list.add(new StationInfo("102", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
         list.add(new StationInfo("103", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
@@ -457,6 +459,14 @@ public class MainActivity extends AppCompatActivity {
         list.add(new StationInfo("902", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
         list.add(new StationInfo("903", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
         list.add(new StationInfo("904", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
+
+        for(StationInfo item : list){
+            if(n > 15){
+                n = 0;
+            }
+            item.setDepartTime(n);
+            n += 5;
+        }
 
         return list;
     }

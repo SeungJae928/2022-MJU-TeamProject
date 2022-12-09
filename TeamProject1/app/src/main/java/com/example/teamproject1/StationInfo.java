@@ -7,6 +7,8 @@ public class StationInfo {
     private boolean toilet;
     private boolean store;
     private boolean vending;
+    private int departTime;
+
 
     public StationInfo(String st_name, int congestion, boolean toilet, boolean store, boolean vending){
         this.st_name = st_name;
@@ -54,5 +56,13 @@ public class StationInfo {
 
     public void setVending(boolean vending) {
         this.vending = vending;
+    }
+
+    public int getDepartTime() {
+        return departTime;
+    }
+
+    public void setDepartTime(int departTime) {
+        this.departTime = departTime;
     }
 }
