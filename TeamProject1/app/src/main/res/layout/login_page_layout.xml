@@ -90,36 +90,6 @@
             android:textStyle="bold"
             android:background="@drawable/join_button" />
 
-        <Button
-            android:id="@+id/lan_button_eng"
-            android:layout_width="86dp"
-            android:layout_height="63dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="165dp"
-            android:layout_marginTop="589dp"
-            android:background="@drawable/lan_button_eng" />
-
-        <Button
-            android:id="@+id/lan_button_kor"
-            android:layout_width="86dp"
-            android:layout_height="63dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="79dp"
-            android:layout_marginTop="589dp"
-            android:background="@drawable/lan_button_kor" />
-
-        <Button
-            android:id="@+id/lan_button_chn"
-            android:layout_width="86dp"
-            android:layout_height="63dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="251dp"
-            android:layout_marginTop="589dp"
-            android:background="@drawable/lan_button_chn" />
-
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

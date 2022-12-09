@@ -5,6 +5,7 @@ import static android.content.ContentValues.TAG;
 import static com.example.teamproject1.MainActivity.userSid;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -92,11 +93,24 @@ public class RecentlyUsedActivity extends AppCompatActivity {
             }
 
             TextView st_name_start = (TextView) convertView.findViewById(R.id.st_name_rce_start);
+            TextView st_name_way = (TextView) convertView.findViewById(R.id.st_name_rce_way);
             TextView st_name_end = (TextView) convertView.findViewById(R.id.st_name_rce_end);
             TextView searchtype = (TextView) convertView.findViewById(R.id.search_type);
+            View arrow = (View) convertView.findViewById(R.id.arrow);
 
             st_name_start.setText(stItem.getStart());
-            st_name_end.setText(stItem.getEnd());
+            if (stItem.getWay().equals("0")) {
+                st_name_way.setText(stItem.getEnd());
+                st_name_end.setText("0");
+                arrow.setVisibility(View.GONE);
+                st_name_end.setVisibility(View.GONE);
+            } else {
+                arrow.setVisibility(View.VISIBLE);
+                st_name_end.setVisibility(View.VISIBLE);
+                st_name_way.setText(stItem.getWay());
+                st_name_end.setText(stItem.getEnd());
+            }
+
             switch (stItem.getType()) {
                 case 0 :
                     searchtype.setText("최단 시간");
@@ -113,7 +127,16 @@ public class RecentlyUsedActivity extends AppCompatActivity {
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    System.out.println("hello");
+                    Intent intent = new Intent(getApplicationContext(), FindActivity.class);
+                    intent.putExtra("start", st_name_start.getText());
+                    if (st_name_end.getText().equals("0")) {
+                        intent.putExtra("end", st_name_way.getText());
+                    } else {
+                        intent.putExtra("way", st_name_way.getText());
+                        intent.putExtra("end", st_name_end.getText());
+                    }
+                    intent.putExtra("type", searchtype.getText());
+                    startActivity(intent);
                 }
             });
 
