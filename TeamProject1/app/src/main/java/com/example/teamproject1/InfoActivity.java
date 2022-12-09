@@ -38,8 +38,6 @@ public class InfoActivity extends AppCompatActivity {
     private long time = System.currentTimeMillis();
     private long remain = 1200000 - time%1200000;
 
-    private TimeService timeService;
-
     public static boolean state;
     public static String station_name = "";
 
@@ -51,7 +49,6 @@ public class InfoActivity extends AppCompatActivity {
         String str = "";
 
         db = new UserDBHelper(InfoActivity.this);
-        timeService = new TimeService();
         fav_list = db.getFavoriteDatabyUserSid(userSid);
         stList = getStList();
 
