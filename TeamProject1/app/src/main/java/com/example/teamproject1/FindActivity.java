@@ -10,6 +10,7 @@ import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -64,10 +65,11 @@ public class FindActivity extends AppCompatActivity {
 
     public String sharing;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        Button mButton, addButton, alarmButton;
+        Button mButton, addButton, alarmButton, share_btn;
         d = new Dijkstra(this);
 
         db = new UserDBHelper(FindActivity.this);
@@ -100,14 +102,14 @@ public class FindActivity extends AppCompatActivity {
                 way = !way;
             }
         });
-      
+
         Intent intent = getIntent();
 
         EditText start_main = (EditText) findViewById(R.id.searchView11);
         EditText end_main = (EditText) findViewById(R.id.searchView13);
         start_main.setText(intent.getStringExtra("start"));
         end_main.setText(intent.getStringExtra("end"));
-      
+
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -124,7 +126,7 @@ public class FindActivity extends AppCompatActivity {
                 end.setText(changeEnd);
             }
         });
-      
+
 
         timeTv = (TextView) findViewById(R.id.clockView);
 
@@ -198,6 +200,24 @@ public class FindActivity extends AppCompatActivity {
 
         //  텍스트뷰 받아오기
         mtextView = findViewById(R.id.clockView);
+
+        share_btn = findViewById(R.id.share_btn);
+
+        share_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent Sharing_intent = new Intent(Intent.ACTION_SEND);
+                Sharing_intent.setType("text/plain");
+
+                String sharing  = FindActivity.this.sharing;
+
+                Sharing_intent.putExtra(Intent.EXTRA_TEXT, sharing );
+
+                Intent Sharing = Intent.createChooser(Sharing_intent, "공유하기");
+                startActivity(Sharing);
+            }
+        });
+
 
     } // onCreate
 
