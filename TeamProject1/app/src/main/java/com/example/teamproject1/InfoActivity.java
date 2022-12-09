@@ -6,18 +6,21 @@ import static com.example.teamproject1.MainActivity.userSid;
 import android.content.Intent;
 import android.graphics.Color;
 import android.icu.text.IDNA;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import java.lang.ref.WeakReference;
 import java.text.ParseException;
@@ -37,9 +40,11 @@ public class InfoActivity extends AppCompatActivity {
     private long t;
     private long time = System.currentTimeMillis();
     private long remain = 1200000 - time%1200000;
+    private String type;
 
     public static boolean state;
     public static String station_name = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +56,23 @@ public class InfoActivity extends AppCompatActivity {
         db = new UserDBHelper(InfoActivity.this);
         fav_list = db.getFavoriteDatabyUserSid(userSid);
         stList = getStList();
+
+        type = db.getUserDatabySId(userSid).getColor();
+
+        LinearLayout Ll = (LinearLayout) findViewById(R.id.linearLayout1);
+        if (type.equals("blue")) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                Ll.setBackgroundColor(getColor(R.color.blue_3F9CF1));
+            }
+        } else if (type.equals("pink")) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                Ll.setBackgroundColor(getColor(R.color.pink_F13FCA));
+            }
+        } else if (type.equals("green")) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                Ll.setBackgroundColor(getColor(R.color.green_64AE70));
+            }
+        }
 
         textView = findViewById(R.id.st_name_info);
         textView.setText(station_name);

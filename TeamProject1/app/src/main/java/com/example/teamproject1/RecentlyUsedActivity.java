@@ -5,6 +5,7 @@ import static android.content.ContentValues.TAG;
 import static com.example.teamproject1.MainActivity.userSid;
 
 import android.content.Context;
+import android.os.Build;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +18,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import org.w3c.dom.Text;
 
@@ -30,6 +32,7 @@ public class RecentlyUsedActivity extends AppCompatActivity {
     private Button back_btn;
     private ListViewAdapter listViewAdapter;
     private ListView listView;
+    private String type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,23 @@ public class RecentlyUsedActivity extends AppCompatActivity {
         listView = findViewById(R.id.rec_listview);
         listViewAdapter = new ListViewAdapter();
         listView.setAdapter(listViewAdapter);
+
+        type = db.getUserDatabySId(userSid).getColor();
+
+        Toolbar tb = (Toolbar)findViewById(R.id.toolbar);
+        if (type.equals("blue")) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                tb.setBackgroundColor(getColor(R.color.blue_3F9CF1));
+            }
+        } else if (type.equals("pink")) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                tb.setBackgroundColor(getColor(R.color.pink_F13FCA));
+            }
+        } else if (type.equals("green")) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                tb.setBackgroundColor(getColor(R.color.green_64AE70));
+            }
+        }
 
         for(Recent item : stList){
             listViewAdapter.addItem(item);
