@@ -28,12 +28,13 @@ public class LoginActivity extends AppCompatActivity {
     private final long finishTime= 1000;
     private long pressTime = 0;
 
-    GradientDrawable drawableButOval;
-    GradientDrawable drawableElipseWhiteblue;
-    GradientDrawable drawableRadiusLayout;
-    GradientDrawable drawableRadiusMainblue;
-    GradientDrawable drawableRadiusSearchLayout;
-    GradientDrawable drawableRadiusWhiteblue;
+    private GradientDrawable drawableButOval;
+    private GradientDrawable drawableElipseWhiteblue;
+    private GradientDrawable drawableRadiusLayout;
+    private GradientDrawable drawableRadiusMainblue;
+    private GradientDrawable drawableRadiusSearchLayout;
+    private GradientDrawable drawableRadiusWhiteblue;
+    private GradientDrawable drawableFavItem;
 
 
     @Override
@@ -135,6 +136,7 @@ public class LoginActivity extends AppCompatActivity {
         drawableRadiusMainblue = (GradientDrawable) getResources().getDrawable(R.drawable.radius_mainblue);
         drawableRadiusSearchLayout = (GradientDrawable) getResources().getDrawable(R.drawable.radius_search_layout);
         drawableRadiusWhiteblue = (GradientDrawable) getResources().getDrawable(R.drawable.radius_whiteblue);
+        drawableFavItem = (GradientDrawable) getResources().getDrawable(R.drawable.fav_item);
 
         if(type.equals("blue")){
             setBlue();
@@ -164,6 +166,9 @@ public class LoginActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             drawableRadiusWhiteblue.setColor(getColor(R.color.blue_E1E9F6));
         }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            drawableFavItem.setColor(getColor(R.color.blue_E1E9F6));
+        }
     }
 
     public void setPink() {
@@ -185,6 +190,9 @@ public class LoginActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             drawableRadiusWhiteblue.setColor(getColor(R.color.pink_F6E1F1));
         }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            drawableFavItem.setColor(getColor(R.color.pink_F6E1F1));
+        }
     }
 
     public void setGreen() {
@@ -205,6 +213,9 @@ public class LoginActivity extends AppCompatActivity {
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             drawableRadiusWhiteblue.setColor(getColor(R.color.green_E1F6E2));
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            drawableFavItem.setColor(getColor(R.color.green_E1F6E2));
         }
     }
 
