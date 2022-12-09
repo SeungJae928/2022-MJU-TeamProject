@@ -9,6 +9,7 @@ public class User {
     public String id;
     public String pw;
     public String name;
+    private String color;
 
     public String getSid() {
         return sid;
@@ -40,5 +41,13 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 }
