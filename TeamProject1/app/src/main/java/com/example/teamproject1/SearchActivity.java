@@ -3,6 +3,8 @@ package com.example.teamproject1;
 import static android.content.ContentValues.TAG;
 
 import static com.example.teamproject1.InfoActivity.station_name;
+import static com.example.teamproject1.MainActivity.getStList;
+import static com.example.teamproject1.MainActivity.userSid;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -32,17 +34,24 @@ import java.util.List;
 
 public class SearchActivity extends AppCompatActivity {
 
-    private String[] mStrs = { "aaa", "bbb", "ccc", "ddd" };
     private SearchView msearchView;
     private ListView mListView;
     private ListViewAdapter listViewAdapter;
+    private stListViewAdapter stlistViewAdapter;
     private UserDBHelper db;
+    private List<Searched> searchedList_init;
+    private List<StationInfo> stList;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_page);
+
+        db = new UserDBHelper(SearchActivity.this);
+        searchedList_init = db.getRecentlySearchedData(userSid);
+
+        stList = getStList();
 
         // 액션바 숨기기
         ActionBar actionBar = getSupportActionBar();
@@ -61,25 +70,44 @@ public class SearchActivity extends AppCompatActivity {
         //
         msearchView = (SearchView) findViewById(R.id.searchView);
         mListView = (ListView) findViewById(R.id.listView_search);
-        listViewAdapter = new ListViewAdapter();
-        mListView.setAdapter(listViewAdapter);
+        TextView text = (TextView) findViewById(R.id.textView_search);
 
-        listViewAdapter.addItem("str");
-        listViewAdapter.addItem("str2");
+        listViewAdapter = new ListViewAdapter();
+        for(Searched item : searchedList_init){
+            listViewAdapter.addItem(item);
+        }
+        mListView.setAdapter(listViewAdapter);
 
         // 검색바 구현
         msearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                System.out.println("hi");
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                if(!TextUtils.isEmpty(newText)){
-                    mListView.setFilterText(newText);
-                }else{
-                    mListView.clearTextFilter();
+                //아무것도 입력하지 않았을때 최근 검색 기록 노출
+                if(newText.equals("")){
+                    List<Searched> list = db.getRecentlySearchedData(userSid);
+                    System.out.println(list);
+                    listViewAdapter = new ListViewAdapter();
+                    for(Searched item : list){
+                        listViewAdapter.addItem(item);
+                    }
+                    mListView.setAdapter(listViewAdapter);
+                    text.setText("최근 검색 기록");
+                } else {
+                    List<StationInfo> list = stList;
+                    stlistViewAdapter = new stListViewAdapter();
+                    for(StationInfo item : stList) {
+                        if(item.getSt_name().contains(newText)){
+                            stlistViewAdapter.addItem(item);
+                        }
+                    }
+                    mListView.setAdapter(stlistViewAdapter);
+                    text.setText("검색어를 포함하는 결과");
                 }
                 return false;
             }
@@ -87,14 +115,14 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     public class ListViewAdapter extends BaseAdapter {
-        ArrayList<String> items = new ArrayList<>();
+        ArrayList<Searched> items = new ArrayList<>();
 
         @Override
         public int getCount() {
             return items.size();
         }
 
-        public void addItem(String item) {
+        public void addItem(Searched item) {
             items.add(item);
         }
 
@@ -111,7 +139,7 @@ public class SearchActivity extends AppCompatActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup viewGroup) {
             final Context context = viewGroup.getContext();
-            final String stItem = items.get(position);
+            final Searched stItem = items.get(position);
 
             if(convertView == null) {
                 LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -123,15 +151,78 @@ public class SearchActivity extends AppCompatActivity {
             }
 
             TextView text = convertView.findViewById(R.id.st_name_search);
-            text.setText(stItem);
+            text.setText(stItem.getStation());
             //각 아이템 선택 event
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    System.out.println(stItem);
-                    station_name = stItem;
+                    station_name = stItem.getStation();
                     Intent intent = new Intent(getApplicationContext(), InfoActivity.class);
                     startActivity(intent);
+                }
+            });
+
+            return convertView;  //뷰 객체 반환
+        }
+    }
+
+    public class stListViewAdapter extends BaseAdapter {
+        ArrayList<StationInfo> items = new ArrayList<>();
+
+        @Override
+        public int getCount() {
+            return items.size();
+        }
+
+        public void addItem(StationInfo item) {
+            items.add(item);
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return items.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup viewGroup) {
+            final Context context = viewGroup.getContext();
+            final StationInfo stItem = items.get(position);
+
+            if (convertView == null) {
+                LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                convertView = inflater.inflate(R.layout.simple_list_item, viewGroup, false);
+
+            } else {
+                View view = new View(context);
+                view = (View) convertView;
+            }
+
+            TextView text = convertView.findViewById(R.id.st_name_search);
+            text.setText(stItem.getSt_name());
+            //각 아이템 선택 event
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    station_name = stItem.getSt_name();
+                    List<Searched> list = db.getRecentlySearchedData(userSid);
+                    try {
+                        for(Searched item : list){
+                            if(item.getStation().equals(station_name)){
+                                throw new reduplicationEx("중복 입력 방지");
+                            }
+                        }
+                        db.insertDatatoRecentlySearched(userSid, station_name);
+                    } catch (reduplicationEx e) {
+                        System.out.println(e.getMessage());
+                    } finally {
+                        Intent intent = new Intent(getApplicationContext(), InfoActivity.class);
+                        startActivity(intent);
+                    }
                 }
             });
 
@@ -143,5 +234,5 @@ public class SearchActivity extends AppCompatActivity {
     public void onBackPressed() {
         finish();
     }
-
 }
+

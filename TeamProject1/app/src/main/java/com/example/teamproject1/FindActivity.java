@@ -31,6 +31,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -59,6 +60,7 @@ public class FindActivity extends AppCompatActivity {
     private List<Recent> recentList;
     private int tp;
     private Thread thread = null;
+    private ImageButton button2;
 
 
 
@@ -79,6 +81,7 @@ public class FindActivity extends AppCompatActivity {
 
         addButton = (Button)findViewById(R.id.addButton);
         toolbar = (androidx.appcompat.widget.Toolbar) findViewById(R.id.toolbar);
+        button2 = (ImageButton)findViewById(R.id.imageButton2);
         waySearchView = (EditText)findViewById(R.id.searchView12);
 
         addButton.setOnClickListener(new View.OnClickListener() {
@@ -97,13 +100,31 @@ public class FindActivity extends AppCompatActivity {
                 way = !way;
             }
         });
-
+      
         Intent intent = getIntent();
 
         EditText start_main = (EditText) findViewById(R.id.searchView11);
         EditText end_main = (EditText) findViewById(R.id.searchView13);
         start_main.setText(intent.getStringExtra("start"));
         end_main.setText(intent.getStringExtra("end"));
+      
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText start = (EditText) findViewById(R.id.searchView11);
+                EditText end = (EditText) findViewById(R.id.searchView13);
+
+                String changeStart;
+                changeStart = end.getText().toString();
+                String changeEnd;
+                changeEnd = start.getText().toString();
+
+                start.setText(changeStart);
+
+                end.setText(changeEnd);
+            }
+        });
+      
 
         timeTv = (TextView) findViewById(R.id.clockView);
 
