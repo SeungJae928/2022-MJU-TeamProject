@@ -48,6 +48,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -186,13 +187,13 @@ public class FindActivity extends AppCompatActivity {
 
                 builder.setColor(Color.RED);
                 builder.setAutoCancel(false);
-                PendingIntent intent =
-                        PendingIntent.getActivity(FindActivity.this, 0, new Intent(getApplicationContext(), LoginActivity.class), PendingIntent.FLAG_ONE_SHOT);
-                builder.setContentIntent(intent);
+//                PendingIntent intent =
+//                        PendingIntent.getActivity(FindActivity.this, 0, new Intent(getApplicationContext(), LoginActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
+//                builder.setContentIntent(intent);
 
                 NotificationManager notificationManager = (NotificationManager) FindActivity.this.getSystemService(Context.NOTIFICATION_SERVICE);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    notificationManager.createNotificationChannel(new NotificationChannel("default", "기본 채널", NotificationManager.IMPORTANCE_UNSPECIFIED));
+                    notificationManager.createNotificationChannel(new NotificationChannel("default", "기본 채널", NotificationManager.IMPORTANCE_LOW));
                 }
                 notificationManager.notify(1, builder.build());
                 Toast.makeText(getApplicationContext(), "하차 알림을 실행합니다.", Toast.LENGTH_LONG).show();
