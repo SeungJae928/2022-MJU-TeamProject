@@ -10,6 +10,7 @@ import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -31,6 +32,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -59,11 +61,15 @@ public class FindActivity extends AppCompatActivity {
     private List<Recent> recentList;
     private int tp;
     private Thread thread = null;
+    private ImageButton button2;
 
+    public String sharing;
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        Button mButton, addButton, alarmButton;
+        Button mButton, addButton, alarmButton, share_btn;
         d = new Dijkstra(this);
 
         db = new UserDBHelper(FindActivity.this);
@@ -77,6 +83,7 @@ public class FindActivity extends AppCompatActivity {
 
         addButton = (Button)findViewById(R.id.addButton);
         toolbar = (androidx.appcompat.widget.Toolbar) findViewById(R.id.toolbar);
+        button2 = (ImageButton)findViewById(R.id.imageButton2);
         waySearchView = (EditText)findViewById(R.id.searchView12);
 
         addButton.setOnClickListener(new View.OnClickListener() {
@@ -96,6 +103,31 @@ public class FindActivity extends AppCompatActivity {
             }
         });
 
+        Intent intent = getIntent();
+
+        EditText start_main = (EditText) findViewById(R.id.searchView11);
+        EditText end_main = (EditText) findViewById(R.id.searchView13);
+        start_main.setText(intent.getStringExtra("start"));
+        end_main.setText(intent.getStringExtra("end"));
+
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText start = (EditText) findViewById(R.id.searchView11);
+                EditText end = (EditText) findViewById(R.id.searchView13);
+
+                String changeStart;
+                changeStart = end.getText().toString();
+                String changeEnd;
+                changeEnd = start.getText().toString();
+
+                start.setText(changeStart);
+
+                end.setText(changeEnd);
+            }
+        });
+
+
         timeTv = (TextView) findViewById(R.id.clockView);
 
         mTimer = new Timer();
@@ -109,6 +141,10 @@ public class FindActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "하차 알림이 실행중입니다.", Toast.LENGTH_LONG).show();
                         return;
                     }
+                }
+
+                if (timeSecond == -1) {
+                    return;
                 }
 
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(FindActivity.this, "default");
@@ -164,6 +200,24 @@ public class FindActivity extends AppCompatActivity {
 
         //  텍스트뷰 받아오기
         mtextView = findViewById(R.id.clockView);
+
+        share_btn = findViewById(R.id.share_btn);
+
+        share_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent Sharing_intent = new Intent(Intent.ACTION_SEND);
+                Sharing_intent.setType("text/plain");
+
+                String sharing  = FindActivity.this.sharing;
+
+                Sharing_intent.putExtra(Intent.EXTRA_TEXT, sharing );
+
+                Intent Sharing = Intent.createChooser(Sharing_intent, "공유하기");
+                startActivity(Sharing);
+            }
+        });
+
 
     } // onCreate
 
@@ -256,7 +310,7 @@ public class FindActivity extends AppCompatActivity {
                 } else {
                     return false;
                 }
-                if (!way.getText().toString().equals("")){
+                if (!way.getText().toString().equals("") && FindActivity.this.way){
                     w = Integer.parseInt(way.getText().toString());
                 }
                 // 각 메뉴별 아이디를 조사한 후 할일을 적어줌
@@ -375,6 +429,30 @@ public class FindActivity extends AppCompatActivity {
 
                 st.setText(details[0]);
                 info.setText(details[1] + ", " + details[2]);
+
+                sharing = "경로 공유\n\n"
+                        + "출발역: " + start.getText();
+                if (FindActivity.this.way) {
+                    sharing += "\n경유역: " + way;
+                }
+                sharing += "\n도착역: " + end.getText() + "\n\n이동 경로: ";
+                for (int i = 0; i < fr1.getRoute().size(); i++) {
+                    sharing += fr1.getRoute().get(i);
+                    if (i != fr1.getRoute().size()-1) {
+                        sharing += " -> ";
+                    }
+                }
+                for (int i = 0; i < fr2.getRoute().size(); i++) {
+                    sharing += fr2.getRoute().get(i);
+                    if (i != fr2.getRoute().size()-1) {
+                        sharing += " -> ";
+                    }
+                }
+                sharing += "\n\n최단 시간: " + details[0];
+                sharing += "\n최소 비용: " + d.getTotal(fr1.getRoute(), "cost")
+                        + d.getTotal(fr2.getRoute(), "cost");
+
+                System.out.println(sharing);
 
                 //최근 이용 db에 역 이름 등록
                 try {

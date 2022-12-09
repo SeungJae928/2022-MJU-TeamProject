@@ -1,13 +1,13 @@
 package com.example.teamproject1;
 
 import static com.example.teamproject1.InfoActivity.station_name;
-import static com.example.teamproject1.LoginActivity.exit_state;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Build;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -39,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
     private String type = "blue";
 
     public static String userSid;
+
+    private String start = "";
+    private String way = "";
+    private String end = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +78,45 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), InfoActivity.class);
                     startActivity(intent);
                     station_name = btn.getStation();
+                }
+            });
+            btn.getBtn().setOnLongClickListener(new View.OnLongClickListener(){
+                @Override
+                public boolean onLongClick(View view) {
+                    if (start.equals(btn.getStation())) {
+                        // 출발역과 지금 길게 누른 역이 같으면
+                        start = "";
+                        if (btn.getBtn().getBackground().equals(getDrawable(R.drawable.station_button2))) {
+                            btn.getBtn().setBackground(getDrawable(R.drawable.station_button));
+                        } else {
+                            btn.getBtn().setBackground(getDrawable(R.drawable.transfer_station_button));
+                        }
+                    } else if (end.equals(btn.getStation())) {
+                        // 도착역과 지금 길게 누른 역이 같으면
+                        end = "";
+                        if (btn.getBtn().getBackground().equals(getDrawable(R.drawable.station_button3))) {
+                            btn.getBtn().setBackground(getDrawable(R.drawable.station_button));
+                        } else {
+                            btn.getBtn().setBackground(getDrawable(R.drawable.transfer_station_button));
+                        }
+                    } else if (start.equals("")) {
+                        start = btn.getStation();
+                        if (btn.getBtn().getBackground().equals(getDrawable(R.drawable.station_button))) {
+                            btn.getBtn().setBackground(getDrawable(R.drawable.station_button2));
+                        } else {
+                            btn.getBtn().setBackground(getDrawable(R.drawable.transfer_station_button2));
+                        }
+                    } else if (end.equals("")) {
+                        end = btn.getStation();
+                        if (btn.getBtn().getBackground().equals(getDrawable(R.drawable.station_button))) {
+                            btn.getBtn().setBackground(getDrawable(R.drawable.station_button3));
+                        } else {
+                            btn.getBtn().setBackground(getDrawable(R.drawable.transfer_station_button3));
+                        }
+                    } else {
+                        return false;
+                    }
+                    return true;
                 }
             });
         }
@@ -127,7 +170,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), FindActivity.class);
+                if (!start.equals("")) {
+                    intent.putExtra("start", start);
+                }
+                if (!end.equals("")) {
+                    intent.putExtra("end", end);
+                }
                 startActivity(intent);
+
             }
         });
 
@@ -161,6 +211,15 @@ public class MainActivity extends AppCompatActivity {
             pressTime = tempTime;
             Toast.makeText(getApplicationContext(), "뒤로가기를 한번더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        moveTaskToBack(true);
+        finish();
+        android.os.Process.killProcess(android.os.Process.myPid());
     }
 
     public void changeState() {

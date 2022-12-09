@@ -4,8 +4,8 @@ import android.widget.Button;
 
 public class MyButton {
 
-    public Button btn;
-    public String station;
+    private Button btn;
+    private String station;
 
     public MyButton(Button btn, String station){
         this.btn = btn;

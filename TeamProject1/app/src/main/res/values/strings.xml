@@ -7,6 +7,7 @@
     <string name="best">최적 경로</string>
     <string name="fast">최단 시간</string>
     <string name="min_amount">최소 금액</string>
+    <string name="share_start">경로 공유하기</string>
     <string name="minimum">최소 환승</string>
     <string name="spend_time">1시간 32분</string>
     <string name="sort_button">정렬 버튼</string>
