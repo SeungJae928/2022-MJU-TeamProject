@@ -30,6 +30,7 @@ import android.view.MenuItem;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -268,6 +269,13 @@ public class FindActivity extends AppCompatActivity {
 
     // 버튼이 눌렸을 때
     public void mOnClick(View view) {
+
+        View v = FindActivity.this.getCurrentFocus();
+        if (v != null) {
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+        }
+
         // 팝업 메뉴 객체 생성
         PopupMenu popup = new PopupMenu(this, view);
 
@@ -303,6 +311,7 @@ public class FindActivity extends AppCompatActivity {
             Integer e = 0;
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
+
                 if (!start.getText().toString().equals("") && !end.getText().toString().equals("")){
                     s = Integer.parseInt(start.getText().toString());
                     e = Integer.parseInt(end.getText().toString());

@@ -6,49 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".FindActivity">
-    <!--
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
-        android:background="@color/mainblue"
-        android:paddingStart="45dp"
-        android:paddingTop="25dp"
-        android:paddingEnd="0dp"
-        android:paddingBottom="0dp">
 
-        <SearchView
-            android:id="@+id/searchView_start"
-            android:layout_width="350dp"
-            android:layout_height="40dp"
-            android:background="@drawable/radius_whiteblue"
-            android:iconifiedByDefault="false"
-            android:queryHint="출발역을 입력하세요." />
-
-        <SearchView
-            android:id="@+id/searchView_middle"
-            android:layout_width="350dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="57dp"
-            android:layout_marginBottom="25dp"
-            android:background="@drawable/radius_whiteblue"
-            android:iconifiedByDefault="false"
-            android:queryHint="경유역을 입력하세요." />
-
-
-        <SearchView
-            android:id="@+id/searchView_end"
-            android:layout_width="350dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="114dp"
-            android:layout_marginBottom="25dp"
-            android:background="@drawable/radius_whiteblue"
-            android:iconifiedByDefault="false"
-            android:queryHint="도착역을 입력하세요." />
-
-
-    </FrameLayout>
-    -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
