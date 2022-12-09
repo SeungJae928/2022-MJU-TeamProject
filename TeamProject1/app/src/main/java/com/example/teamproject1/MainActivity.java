@@ -165,7 +165,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), RecentlyUsedActivity.class);
                 startActivity(intent);
-                //finish();
             }
         });
 
@@ -224,11 +223,6 @@ public class MainActivity extends AppCompatActivity {
         moveTaskToBack(true);
         finish();
         android.os.Process.killProcess(android.os.Process.myPid());
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
     }
 
     public void changeState() {
