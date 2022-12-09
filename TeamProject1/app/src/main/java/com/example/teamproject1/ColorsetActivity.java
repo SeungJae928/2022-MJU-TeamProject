@@ -40,7 +40,6 @@ public class ColorsetActivity extends AppCompatActivity {
 
     private String type = "blue";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +70,10 @@ public class ColorsetActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //파란테마 변경
                 type = "blue";
+                Toolbar tb = (Toolbar)findViewById(R.id.toolbar);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    tb.setBackgroundColor(getColor(R.color.blue_3F9CF1));
+                }
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     drawableButOval.setColor(getColor(R.color.blue_B3D5F2));
                 }
@@ -100,6 +103,10 @@ public class ColorsetActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //pink
                 type = "pink";
+                Toolbar tb = (Toolbar)findViewById(R.id.toolbar);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    tb.setBackgroundColor(getColor(R.color.pink_F13FCA));
+                }
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     drawableButOval.setColor(getColor(R.color.pink_F2B3DD));
                 }
@@ -129,6 +136,10 @@ public class ColorsetActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //green
                 type = "green";
+                Toolbar tb = (Toolbar)findViewById(R.id.toolbar);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    tb.setBackgroundColor(getColor(R.color.green_64AE70));
+                }
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     drawableButOval.setColor(getColor(R.color.green_B3F2B9));
                 }

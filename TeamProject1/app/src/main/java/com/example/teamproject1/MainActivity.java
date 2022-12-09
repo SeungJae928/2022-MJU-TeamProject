@@ -52,7 +52,10 @@ public class MainActivity extends AppCompatActivity {
 //        actionBar.hide();
 
         type = getIntent().getStringExtra("type");
-
+        if (type == null) {
+            type = "blue";
+        }
+        System.out.println(type);
         NavigationView nv = (NavigationView) findViewById(R.id.navigationView);
         if (type.equals("blue")) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -62,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 nv.setBackgroundColor(getColor(R.color.pink_F13FCA));
             }
-        } else if (type.equals("pink")) {
+        } else if (type.equals("green")) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 nv.setBackgroundColor(getColor(R.color.green_64AE70));
             }
