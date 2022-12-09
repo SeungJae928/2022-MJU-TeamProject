@@ -226,6 +226,11 @@ public class MainActivity extends AppCompatActivity {
         android.os.Process.killProcess(android.os.Process.myPid());
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
     public void changeState() {
         if(btn_state){
             btn_state = false;

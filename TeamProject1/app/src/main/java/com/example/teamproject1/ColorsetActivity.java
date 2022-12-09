@@ -64,7 +64,6 @@ public class ColorsetActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.putExtra("type", type);
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -173,6 +172,5 @@ public class ColorsetActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         intent.putExtra("type", type);
         startActivity(intent);
-        finish();
     }
 }
