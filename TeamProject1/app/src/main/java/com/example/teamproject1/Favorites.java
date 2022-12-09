@@ -8,6 +8,7 @@ public class Favorites {
     private String userSid;
     private String station;
 
+    public Favorites(){}
     public Favorites(String station){
         this.station = station;
     }
