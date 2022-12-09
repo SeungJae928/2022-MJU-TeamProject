@@ -9,6 +9,7 @@ import static com.example.teamproject1.MainActivity.userSid;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -18,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -26,6 +28,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 
 import org.w3c.dom.Text;
 
@@ -41,6 +44,7 @@ public class SearchActivity extends AppCompatActivity {
     private UserDBHelper db;
     private List<Searched> searchedList_init;
     private List<StationInfo> stList;
+    private String type;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -52,6 +56,23 @@ public class SearchActivity extends AppCompatActivity {
         searchedList_init = db.getRecentlySearchedData(userSid);
 
         stList = getStList();
+
+        type = db.getUserDatabySId(userSid).getColor();
+
+        FrameLayout tb = (FrameLayout)findViewById(R.id.Fl);
+        if (type.equals("blue")) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                tb.setBackgroundColor(getColor(R.color.blue_3F9CF1));
+            }
+        } else if (type.equals("pink")) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                tb.setBackgroundColor(getColor(R.color.pink_F13FCA));
+            }
+        } else if (type.equals("green")) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                tb.setBackgroundColor(getColor(R.color.green_64AE70));
+            }
+        }
 
         // 액션바 숨기기
         ActionBar actionBar = getSupportActionBar();

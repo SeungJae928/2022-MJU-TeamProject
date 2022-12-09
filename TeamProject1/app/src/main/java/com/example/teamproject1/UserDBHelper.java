@@ -21,6 +21,7 @@ class UserDBHelper extends SQLiteOpenHelper {
     public static final String COL_2="userID";
     public static final String COL_3="userPW";
     public static final String COL_4="name";
+    public static final String COL_5="color";
 
     public static final String TABLE_NAME2= "Favorite";
     public static final String COL_1_2="ID";
@@ -54,7 +55,8 @@ class UserDBHelper extends SQLiteOpenHelper {
                 + " (" + COL_1 + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COL_2 + " TEXT, "
                 + COL_3 + " TEXT, "
-                + COL_4 + " TEXT); ");
+                + COL_4 + " TEXT, "
+                + COL_5 + " TEXT); ");
         db.execSQL("CREATE TABLE " + TABLE_NAME2
                 + " (" + COL_1_2 + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COL_2_2 + " TEXT, "
@@ -86,6 +88,7 @@ class UserDBHelper extends SQLiteOpenHelper {
         contentValues.put(COL_2,userID);
         contentValues.put(COL_3,userPW);
         contentValues.put(COL_4,name);
+        contentValues.put(COL_5,"blue");
 
         long result = db.insert(TABLE_NAME,null,contentValues);
 
@@ -180,6 +183,23 @@ class UserDBHelper extends SQLiteOpenHelper {
         user.setId(res.getString(1));
         user.setPw(res.getString(2));
         user.setName(res.getString(3));
+        user.setColor(res.getString(4));
+
+        return user;
+    }
+
+    public User getUserDatabySId(String sid){
+        sDB = this.getWritableDatabase();
+        Cursor res = sDB.rawQuery("select * from "+ TABLE_NAME+ " where ID='"+sid+"';",null);
+        res.moveToFirst();
+
+        User user = new User();
+
+        user.setSid(res.getString(0));
+        user.setId(res.getString(1));
+        user.setPw(res.getString(2));
+        user.setName(res.getString(3));
+        user.setColor(res.getString(4));
 
         return user;
     }
@@ -192,13 +212,10 @@ class UserDBHelper extends SQLiteOpenHelper {
     }
 
     //데이터 수정
-    public boolean updateData(String id,String userID,String userPW,String name){
+    public boolean updateUserColorData(String id, String color){
         SQLiteDatabase db= this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_1,id);
-        contentValues.put(COL_2,userID);
-        contentValues.put(COL_3,userPW);
-        contentValues.put(COL_4,name);
+        contentValues.put(COL_5, color);
         db.update(TABLE_NAME,contentValues,"ID=?",new String[]{id});
         return true;
     }
@@ -266,6 +283,7 @@ class UserDBHelper extends SQLiteOpenHelper {
                     user.setId(mCur.getString(1));
                     user.setPw(mCur.getString(2));
                     user.setName(mCur.getString(3));
+                    user.setColor(mCur.getString(4));
 
                     // 리스트에 넣기
                     userList.add(user);

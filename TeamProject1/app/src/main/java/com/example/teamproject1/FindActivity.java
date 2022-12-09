@@ -5,6 +5,7 @@ import static com.example.teamproject1.MainActivity.userSid;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.app.NotificationCompat;
@@ -38,7 +39,6 @@ import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.example.teamproject1.R;
 
@@ -63,6 +63,7 @@ public class FindActivity extends AppCompatActivity {
     private int tp;
     private Thread thread = null;
     private ImageButton button2;
+    private String type;
 
     public String sharing;
 
@@ -75,6 +76,8 @@ public class FindActivity extends AppCompatActivity {
         db = new UserDBHelper(FindActivity.this);
         recentList = db.getRecentlyUsedData(userSid);
 
+        type = db.getUserDatabySId(userSid).getColor();
+
         androidx.appcompat.widget.Toolbar toolbar;
         EditText waySearchView;
 
@@ -85,6 +88,20 @@ public class FindActivity extends AppCompatActivity {
         toolbar = (androidx.appcompat.widget.Toolbar) findViewById(R.id.toolbar);
         button2 = (ImageButton)findViewById(R.id.imageButton2);
         waySearchView = (EditText)findViewById(R.id.searchView12);
+
+        if (type.equals("blue")) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                toolbar.setBackgroundColor(getColor(R.color.blue_3F9CF1));
+            }
+        } else if (type.equals("pink")) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                toolbar.setBackgroundColor(getColor(R.color.pink_F13FCA));
+            }
+        } else if (type.equals("green")) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                toolbar.setBackgroundColor(getColor(R.color.green_64AE70));
+            }
+        }
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override

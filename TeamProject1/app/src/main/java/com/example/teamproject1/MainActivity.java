@@ -4,10 +4,14 @@ import static com.example.teamproject1.InfoActivity.station_name;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Build;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.VectorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -30,13 +34,14 @@ public class MainActivity extends AppCompatActivity {
     private List<MyButton> btnlist;
     private Button searchButton;
     private List<StationInfo> stList;
+    private UserDBHelper db;
 
     private final long finishTime= 1000;
     private long pressTime = 0;
 
     private boolean btn_state = true;
 
-    private String type = "blue";
+    private String type;
 
     public static String userSid;
 
@@ -51,11 +56,13 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
 //        actionBar.hide();
 
-        type = getIntent().getStringExtra("type");
-        if (type == null) {
-            type = "blue";
-        }
-        System.out.println(type);
+        db = new UserDBHelper(MainActivity.this);
+
+        btnlist = this.getButtonList();
+        stList = this.getStList();
+
+        type = db.getUserDatabySId(userSid).getColor();
+
         NavigationView nv = (NavigationView) findViewById(R.id.navigationView);
         if (type.equals("blue")) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -70,9 +77,6 @@ public class MainActivity extends AppCompatActivity {
                 nv.setBackgroundColor(getColor(R.color.green_64AE70));
             }
         }
-
-        btnlist = this.getButtonList();
-        stList = this.getStList();
 
         for(MyButton btn : btnlist){
             btn.getBtn().setOnClickListener(new View.OnClickListener() {
@@ -362,7 +366,8 @@ public class MainActivity extends AppCompatActivity {
         List<StationInfo> list = new ArrayList<>();
         long seed = 845489;
         Random rand = new Random(seed);
-        Random rand2 = new Random(System.currentTimeMillis());
+        Random rand2 = new Random(seed);
+        int n = 0;
         list.add(new StationInfo("101", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
         list.add(new StationInfo("102", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
         list.add(new StationInfo("103", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
@@ -483,6 +488,16 @@ public class MainActivity extends AppCompatActivity {
         list.add(new StationInfo("903", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
         list.add(new StationInfo("904", rand2.nextInt(3), rand.nextBoolean(), rand.nextBoolean(), rand.nextBoolean()));
 
+        for(StationInfo item : list){
+            if(n > 15){
+                n = 0;
+            }
+            item.setDepartTime(n);
+            n += 5;
+        }
+
         return list;
     }
+
+
 }

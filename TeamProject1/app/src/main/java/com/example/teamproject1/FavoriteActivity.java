@@ -10,6 +10,7 @@ import static com.example.teamproject1.MainActivity.userSid;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,7 +24,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
+
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +40,7 @@ public class FavoriteActivity extends AppCompatActivity {
     private ListViewAdapter listViewAdapter;
     private List<Favorites> fav_list;
     private List<StationInfo> stList;
+    private String type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +48,24 @@ public class FavoriteActivity extends AppCompatActivity {
         setContentView(R.layout.fav_page);
 
         db = new UserDBHelper(FavoriteActivity.this);
+
+        type = db.getUserDatabySId(userSid).getColor();
+
+        Toolbar tb = (Toolbar)findViewById(R.id.toolbar);
+        if (type.equals("blue")) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                tb.setBackgroundColor(getColor(R.color.blue_3F9CF1));
+            }
+        } else if (type.equals("pink")) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                tb.setBackgroundColor(getColor(R.color.pink_F13FCA));
+            }
+        } else if (type.equals("green")) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                tb.setBackgroundColor(getColor(R.color.green_64AE70));
+            }
+        }
+
         fav_list = db.getFavoriteDatabyUserSid(userSid);
         stList = getStList();
 
@@ -121,7 +144,7 @@ public class FavoriteActivity extends AppCompatActivity {
                             break;
                         case 1 :
                             st_conge.setText("보통");
-                            st_conge.setTextColor(Color.YELLOW);
+                            st_conge.setTextColor(Color.BLUE);
                             break;
                         case 2 :
                             st_conge.setText("혼잡");

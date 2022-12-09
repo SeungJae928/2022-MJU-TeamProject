@@ -9,8 +9,7 @@ public class User {
     public String id;
     public String pw;
     public String name;
-    public List<Favorites> favoritesList;
-    public List<Recent> recentList;
+    private String color;
 
     public String getSid() {
         return sid;
@@ -44,31 +43,11 @@ public class User {
         this.name = name;
     }
 
-    public List<Favorites> getFavoritesList() {
-        return favoritesList;
+    public String getColor() {
+        return color;
     }
 
-    public void setFavoritesList(List<Favorites> favoritesList) {
-        this.favoritesList = favoritesList;
-    }
-
-    public List<Recent> getRecentList() {
-        return recentList;
-    }
-
-    public void setRecentList(List<Recent> recentList) {
-        this.recentList = recentList;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "sid='" + sid + '\'' +
-                ", id='" + id + '\'' +
-                ", pw='" + pw + '\'' +
-                ", name='" + name + '\'' +
-                ", favoritesList=" + favoritesList +
-                ", recentList=" + recentList +
-                '}';
+    public void setColor(String color) {
+        this.color = color;
     }
 }
