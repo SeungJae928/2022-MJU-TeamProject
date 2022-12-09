@@ -62,7 +62,7 @@ public class FindActivity extends AppCompatActivity {
     private Thread thread = null;
     private ImageButton button2;
 
-
+    public String sharing;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,6 +139,10 @@ public class FindActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "하차 알림이 실행중입니다.", Toast.LENGTH_LONG).show();
                         return;
                     }
+                }
+
+                if (timeSecond == -1) {
+                    return;
                 }
 
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(FindActivity.this, "default");
@@ -405,6 +409,30 @@ public class FindActivity extends AppCompatActivity {
 
                 st.setText(details[0]);
                 info.setText(details[1] + ", " + details[2]);
+
+                sharing = "경로 공유\n\n"
+                        + "출발역: " + start.getText();
+                if (FindActivity.this.way) {
+                    sharing += "\n경유역: " + way;
+                }
+                sharing += "\n도착역: " + end.getText() + "\n\n이동 경로: ";
+                for (int i = 0; i < fr1.getRoute().size(); i++) {
+                    sharing += fr1.getRoute().get(i);
+                    if (i != fr1.getRoute().size()-1) {
+                        sharing += " -> ";
+                    }
+                }
+                for (int i = 0; i < fr2.getRoute().size(); i++) {
+                    sharing += fr2.getRoute().get(i);
+                    if (i != fr2.getRoute().size()-1) {
+                        sharing += " -> ";
+                    }
+                }
+                sharing += "\n\n최단 시간: " + details[0];
+                sharing += "\n최소 비용: " + d.getTotal(fr1.getRoute(), "cost")
+                        + d.getTotal(fr2.getRoute(), "cost");
+
+                System.out.println(sharing);
 
                 //최근 이용 db에 역 이름 등록
                 try {
