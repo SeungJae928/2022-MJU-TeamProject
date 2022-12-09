@@ -2,13 +2,12 @@ package com.example.teamproject1;
 
 public class Recent {
 
-    public String sid;
-    public String userSid;
-    public String start;
-    public String way;
-
-    public String end;
-    public int type;
+    private String sid;
+    private String userSid;
+    private String start;
+    private String way;
+    private String end;
+    private int type;
 
     public String getSid() {
         return sid;

@@ -4,11 +4,9 @@ import android.app.AlertDialog;
 
 public class Favorites {
 
-    public String sid;
-    public String userSid;
-    public String station;
-
-    public Favorites() {}
+    private String sid;
+    private String userSid;
+    private String station;
 
     public Favorites(String station){
         this.station = station;

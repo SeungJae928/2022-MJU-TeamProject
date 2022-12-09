@@ -5,10 +5,10 @@ import java.util.List;
 
 public class User {
 
-    public String sid;
-    public String id;
-    public String pw;
-    public String name;
+    private String sid;
+    private String id;
+    private String pw;
+    private String name;
     private String color;
 
     public String getSid() {
